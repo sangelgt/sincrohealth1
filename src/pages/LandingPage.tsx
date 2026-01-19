@@ -83,7 +83,7 @@ const LandingPage: React.FC = () => {
     <div className="bg-[#FDFBF7] text-[#0A192F] font-outfit premium-gradient">
 
       {/* Hero Section */}
-      <section className="relative min-h-screen flex items-center justify-center pt-24 pb-12 overflow-hidden">
+      <section id="hero" className="relative min-h-screen flex items-center justify-center pt-24 pb-12 overflow-hidden">
         <div className="absolute top-[-10%] right-[-10%] w-[60%] h-[60%] bg-[#137fec]/10 rounded-full blur-[120px]"></div>
         <div className="absolute bottom-[-10%] left-[-10%] w-[50%] h-[50%] bg-[#F1F5F9]/50 rounded-full blur-[100px]"></div>
         <div className="max-w-5xl mx-auto px-6 text-center relative z-10">
