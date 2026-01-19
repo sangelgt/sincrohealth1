@@ -1,19 +1,18 @@
-
 import React from 'react';
 import { Link } from 'react-router-dom';
 
 const Footer: React.FC = () => {
   return (
-    <footer className="py-20 px-6 border-t border-[#8D8273]/10 bg-white/50">
+    <footer className="py-10 px-6 border-t border-[#8D8273]/10 bg-white/50">
       <div className="max-w-7xl mx-auto flex flex-col md:flex-row justify-between items-center gap-10">
         <div className="flex items-center">
           {/* 
             Contenedor optimizado: 
-            - Aumentamos la altura (h-32 a h-48 en desktop) para que el logo respire.
+            - Altura ajustada para reducir el espacio total del footer.
             - Usamos un ancho generoso para que el imagotipo horizontal quepa bien.
             - El object-cover se encarga de eliminar los bordes blancos/vacíos de la imagen cuadrada.
           */}
-          <div className="h-24 md:h-48 w-full max-w-[320px] md:max-w-[600px] overflow-hidden flex items-center justify-center rounded-2xl">
+          <div className="h-24 md:h-32 w-full max-w-[320px] md:max-w-[600px] overflow-hidden flex items-center justify-center rounded-2xl">
             <img 
               src="https://ddnnmcfbgqnhcuozurio.supabase.co/storage/v1/object/public/sincrohealth/logos/imagotipo.webp" 
               alt="SincroHealth AI Logo Completo" 

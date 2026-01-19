@@ -20,14 +20,16 @@ const App: React.FC = () => {
     <Router>
       <ScrollToTop />
       <div className="min-h-screen flex flex-col">
-        <Navbar />
-        <div className="flex-grow">
+        <header>
+          <Navbar />
+        </header>
+        <main className="flex-grow">
           <Routes>
             <Route path="/" element={<LandingPage />} />
             <Route path="/privacidad" element={<PrivacyPolicy />} />
             <Route path="/terminos" element={<Terms />} />
           </Routes>
-        </div>
+        </main>
         <Footer />
       </div>
     </Router>

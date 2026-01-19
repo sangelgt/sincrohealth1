@@ -69,7 +69,7 @@ const Navbar: React.FC = () => {
           onClick={handleRegisterClick}
           className="bg-[#137fec] text-white px-8 py-3 rounded-full text-sm font-semibold hover:bg-blue-600 transition-all shadow-lg shadow-blue-500/20 active:scale-95"
         >
-          Registro
+          Obtener Demo
         </a>
       </nav>
     </header>
