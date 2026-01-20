@@ -22,12 +22,12 @@ const Footer: React.FC = () => {
         </div>
         
         <div className="flex flex-wrap justify-center gap-6 md:gap-10">
-          <Link to="/privacidad" className="text-[10px] uppercase tracking-widest font-semibold text-[#8D8273] hover:text-[#137fec] transition-colors">Privacidad</Link>
-          <Link to="/terminos" className="text-[10px] uppercase tracking-widest font-semibold text-[#8D8273] hover:text-[#137fec] transition-colors">Términos</Link>
-          <a href="mailto:hola@sincrohealth.ai" className="text-[10px] uppercase tracking-widest font-semibold text-[#8D8273] hover:text-[#137fec] transition-colors">Contacto</a>
+          <Link to="/privacidad" className="text-sm uppercase tracking-wider font-medium text-taupe hover:text-sincro-blue transition-colors">Privacidad</Link>
+          <Link to="/terminos" className="text-sm uppercase tracking-wider font-medium text-taupe hover:text-sincro-blue transition-colors">Términos</Link>
+          <a href="mailto:hola@sincrohealth.ai" className="text-sm uppercase tracking-wider font-medium text-taupe hover:text-sincro-blue transition-colors">Contacto</a>
         </div>
         
-        <p className="text-[#8D8273] text-[10px] md:text-xs font-light tracking-wide">
+        <p className="text-xs md:text-sm font-normal tracking-normal text-taupe">
           © 2026 SincroHealth AI. Organic Premium Edition.
         </p>
       </div>

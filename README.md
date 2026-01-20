@@ -195,6 +195,37 @@ Localiza el JSX del desplegable y añade una nueva etiqueta `<option>`.
 
 Si la nueva sección contiene elementos que deben usar la animación de las tarjetas de servicios, simplemente reutiliza la misma estructura de clases CSS documentada en el punto 1.2. La lógica de animación es global y se aplicará a cualquier elemento del DOM que coincida con esa estructura.
 
+### 4.3. Gestión de la Sección de Precios
+
+-   **Ruta del Componente:** `src/components/PricingSection.tsx`
+
+La sección de precios es totalmente dinámica y se gestiona a través de un array de objetos llamado `plans` dentro del componente. Esto permite modificar los planes sin tocar la lógica de renderizado (JSX).
+
+**Para modificar o añadir un plan:**
+
+Localiza el array `plans` y edita uno de los objetos existentes o añade uno nuevo siguiendo la misma estructura.
+
+```javascript
+const plans = [
+  {
+    name: "Sincro-Starter", // Nombre corto del plan
+    title: "Profesional Independiente", // Título principal que se muestra
+    price: "$80", // El precio o texto como "Cotización Personalizada"
+    priceUnit: "USD/mes", // La unidad del precio (puede ser null)
+    features: [ // Lista de características
+      { icon: "smart_toy", text: "Capacidades completas de Bot de IA" },
+      // ... más features
+    ],
+    impact: "Recupere 10 horas...", // Texto de la tarjeta de impacto
+    buttonText: "Solicitar Demo...", // Texto del botón de CTA
+    isRecommended: false // `true` si es el plan recomendado (aplica estilos especiales)
+  },
+  // ... más planes
+];
+```
+
+-   **`isRecommended: true`**: Al marcar un plan como recomendado, se le aplicarán automáticamente los estilos de la tarjeta `pro` (borde azul, etiqueta de "RECOMENDADO", etc.). Asegúrate de que solo un plan tenga este valor en `true`.
+
 ---
 
 ## 5. Checkpoint de Despliegue (Deployment)

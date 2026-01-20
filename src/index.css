@@ -1,314 +1,122 @@
-
+/* === Directivas Fundamentales de Tailwind CSS === */
 @tailwind base;
 @tailwind components;
 @tailwind utilities;
 
-:root {
+/* === Definición de Tokens de Diseño y Tipografías === */
+@layer base {
+  :root {
     --sincro-blue: #137fec;
-    --cream: #F1F5F9;
+    --cream: #FDFBF7;
     --taupe: #8D8273;
     --deep-navy: #0A192F;
-    --cloud-white: #F8FAFC;
-}
-
-body {
+    --medical-green: #e8f5e9;
+    --soft-shadow: 0 20px 50px -12px rgba(141, 130, 115, 0.15);
+    --organic-radius: 60px;
+    --clay-shadow: inset 10px 10px 20px rgba(255, 255, 255, 0.5), 10px 10px 30px rgba(141, 130, 115, 0.1);
+    --clay-shadow-premium: inset 2px 2px 5px rgba(255,255,255,0.7), 8px 8px 20px rgba(0,0,0,0.05);
+  }
+  body {
     font-family: 'Outfit', sans-serif;
     background-color: var(--cream);
-    color: var(--deep-navy);
+    letter-spacing: 0.02em;
+  }
+  html {
     scroll-behavior: smooth;
+  }
 }
 
-.serif-title {
-    font-family: 'Playfair Display', serif;
+/* === Clases de Componentes Personalizados === */
+@layer components {
+  .font-montserrat { font-family: 'Montserrat', sans-serif; }
+  .font-inter { font-family: 'Inter', sans-serif; }
+  
+  .organic-card {
+    @apply bg-white transition-all duration-500 border border-taupe/5;
+    border-radius: var(--organic-radius);
+    box-shadow: var(--soft-shadow);
+  }
+  .organic-card:hover {
+    transform: translateY(-8px);
+    box-shadow: 0 30px 60px -15px rgba(141, 130, 115, 0.25);
+  }
+  
+  .clay-card {
+    @apply bg-white/70 border border-white/80 transition-all duration-300;
+    backdrop-filter: blur(10px);
+    border-radius: 48px;
+    box-shadow: var(--clay-shadow);
+  }
+  .clay-card:hover {
+    transform: scale(1.02);
+    background: rgba(255, 255, 255, 0.9);
+  }
+
+  .feature-cluster-card {
+    @apply rounded-[28px] p-6 transition-all duration-300 border border-white/40 cursor-pointer;
+    box-shadow: var(--clay-shadow-premium);
+  }
+  .feature-cluster-card:hover {
+    transform: scale(1.05) translateX(10px);
+    z-index: 50;
+  }
+
+  .glass-icon-container {
+      @apply relative w-20 h-20 flex items-center justify-center bg-white/40 border border-white/80;
+      backdrop-filter: blur(8px);
+      border-radius: 30% 70% 70% 30% / 30% 30% 70% 70%;
+      box-shadow: inset 0 0 15px rgba(19, 127, 236, 0.1);
+  }
+
+  .premium-gradient {
+    background: radial-gradient(circle at top right, rgba(19, 127, 236, 0.05), transparent),
+                radial-gradient(circle at bottom left, rgba(141, 130, 115, 0.05), transparent);
+  }
+
+  .nav-link {
+    @apply uppercase text-xs font-semibold tracking-widest text-taupe;
+  }
+
+  .hero-title {
+    @apply tracking-tight leading-tight;
+  }
+
+  .cta-button {
+    @apply rounded-[40px] py-5 px-10 transition-all duration-300 tracking-wider;
+  }
+
+  .check-item {
+    @apply flex items-center gap-4 p-4 bg-white rounded-[20px] border border-taupe/5;
+    box-shadow: 0 4px 15px rgba(141, 130, 115, 0.05);
+  }
+
+  /* === Estilos Mockup Teléfono === */
+  .phone-parent {
+      @apply w-[290px] h-[580px] p-3 bg-gray-900 rounded-[50px] shadow-2xl relative mx-auto border-4 border-gray-800;
+      box-shadow: 0 50px 100px -20px rgba(0,0,0,0.3);
+  }
+  .phone-card-int {
+      @apply w-full h-full bg-white rounded-[38px] overflow-hidden relative;
+  }
+  .phone-btn { @apply w-1 h-10 bg-gray-700 absolute left-[-7px] rounded-l-md; }
+  .phone-btn.btn1 { top: 100px; }
+  .phone-btn.btn2 { top: 150px; }
+  .phone-btn.btn3 { top: 200px; }
+  .phone-btn.btn4 { @apply left-auto right-[-7px] top-[150px] h-16 rounded-l-none rounded-r-md; }
+  .phone-top-notch {
+      @apply w-[120px] h-6 bg-gray-900 absolute top-0 left-1/2 -translate-x-1/2 rounded-b-2xl z-20 flex items-center justify-center gap-2;
+  }
+  .phone-camera { @apply w-2 h-2 bg-gray-800 rounded-full; box-shadow: inset 0 0 2px rgba(255,255,255,0.2); }
+  .phone-speaker { @apply w-10 h-1 bg-gray-800 rounded-full; }
 }
 
-.material-symbols-outlined {
-    font-variation-settings: 'FILL' 0, 'wght' 400, 'GRAD' 0, 'opsz' 24;
-}
-
-/* --- ESTILOS SECCIÓN CAOS (UIVERSE 3D TRACKER OPTIMIZADO) --- */
-.caos-card-wrapper {
-  position: relative;
-  width: 100%;
-  height: 450px;
-  transition: 300ms;
-}
-
-.caos-canvas {
-  perspective: 1500px; 
-  inset: 0;
-  z-index: 10;
-  position: absolute;
-  display: grid;
-  grid-template-columns: repeat(5, 1fr);
-  grid-template-rows: repeat(5, 1fr);
-  gap: 0;
-}
-
-.caos-tracker {
-  position: relative;
-  z-index: 30;
-  width: 100%;
-  height: 100%;
-  cursor: pointer;
-}
-
-.caos-card-inner {
-  position: absolute;
-  inset: 0;
-  z-index: 0;
-  transition: transform 0.5s cubic-bezier(0.23, 1, 0.32, 1), box-shadow 0.5s ease;
-  transform-style: preserve-3d;
-  background: white;
-  border-radius: 70px;
-  box-shadow: 0 15px 45px rgba(0,0,0,0.04);
-  border: 1px solid rgba(255,255,255,1);
-  overflow: hidden;
-}
-
-.caos-tracker:nth-child(1):hover ~ .caos-card-inner { transform: rotateX(8deg) rotateY(-8deg); }
-.caos-tracker:nth-child(2):hover ~ .caos-card-inner { transform: rotateX(8deg) rotateY(-4deg); }
-.caos-tracker:nth-child(3):hover ~ .caos-card-inner { transform: rotateX(8deg) rotateY(0deg); }
-.caos-tracker:nth-child(4):hover ~ .caos-card-inner { transform: rotateX(8deg) rotateY(4deg); }
-.caos-tracker:nth-child(5):hover ~ .caos-card-inner { transform: rotateX(8deg) rotateY(8deg); }
-
-.caos-tracker:nth-child(11):hover ~ .caos-card-inner { transform: rotateX(0deg) rotateY(-8deg); }
-.caos-tracker:nth-child(13):hover ~ .caos-card-inner { transform: rotateX(0deg) rotateY(0deg); }
-.caos-tracker:nth-child(15):hover ~ .caos-card-inner { transform: rotateX(0deg) rotateY(8deg); }
-
-.caos-tracker:nth-child(21):hover ~ .caos-card-inner { transform: rotateX(-8deg) rotateY(-8deg); }
-.caos-tracker:nth-child(25):hover ~ .caos-card-inner { transform: rotateX(-8deg) rotateY(8deg); }
-
-.caos-card-wrapper:hover .caos-card-inner {
-  box-shadow: 0 45px 100px -20px rgba(19, 127, 236, 0.15);
-}
-
-/* --- ESTILOS SECCIÓN SOLUCIONES (FLUTTER/STUDIO INSPIRED) --- */
-.cards {
-  display: flex;
-  flex-direction: column;
-  gap: 15px;
-  align-items: center;
-  width: 100%;
-}
-
-.cards .card {
-  position: relative;
-  width: 100%;
-  border-radius: 20px;
-  overflow: hidden;
-  cursor: pointer;
-  transition: transform 400ms, filter 400ms;
-}
-
-.card-image {
-    display: block;
-    width: 100%;
-    height: auto;
-    transition: transform 400ms;
-}
-
-.card-text-container {
-    position: absolute;
-    inset: 0;
-    display: flex;
-    flex-direction: column;
-    justify-content: center;
-    align-items: center;
-    color: white;
-    background-color: rgba(10, 25, 47, 0.5);
-    opacity: 1;
-    transition: opacity 400ms;
-    pointer-events: none; /* Permite que el hover llegue a la tarjeta principal */
-}
-
-.cards .card:hover .card-text-container {
-    opacity: 0;
-}
-
-.cards .card:hover .card-image {
-    transform: scale(1.1);
-}
-
-.cards:hover > .card:not(:hover) {
-  transform: scale(0.95);
-  filter: blur(8px) opacity(0.7);
-}
-
-.cards .card p.tip {
-  font-size: 1.5em; 
-  font-weight: 700;
-  font-family: 'Playfair Display', serif;
-}
-
-.cards .card p.second-text {
-  font-size: .9em;
-  font-family: 'Outfit', sans-serif;
-}
-
-
-::-webkit-scrollbar { width: 8px; }
-::-webkit-scrollbar-track { background: var(--cloud-white); }
-::-webkit-scrollbar-thumb { background: #cbd5e1; border-radius: 10px; }
-
-/* Phone Mockup Styles */
-.phone-mockup {
-  width: 280px; /* Ajustado para un look más moderno */
-  height: 560px; /* Proporción de smartphone */
-  background: black;
-  border-radius: 45px; /* Bordes más redondeados */
-  border: 2px solid rgb(40, 40, 40);
-  padding: 8px;
-  position: relative;
-  box-shadow: 0 20px 50px -10px rgba(0, 0, 0, 0.5);
-}
-
-.phone-screen {
-  height: 100%;
-  border-radius: 35px;
-  overflow-y: auto;
-  overflow-x: hidden;
-  /* Ocultar scrollbar */
-  scrollbar-width: none; /* Firefox */
-  -ms-overflow-style: none;  /* IE and Edge */
-  /* Efecto de resistencia */
-  overscroll-behavior: contain;
-  background-color: var(--deep-navy); /* Fondo por defecto */
-}
-
-.phone-screen::-webkit-scrollbar {
-  display: none; /* Chrome, Safari, and Opera */
-}
-
-.metrics-image {
-  width: 100%;
-  height: auto;
-  display: block;
-  object-fit: cover; /* Similar a BoxFit.fitWidth, pero mejor para scroll */
-  object-position: top; /* Similar a Alignment.topCenter */
-}
-
-.error-fallback {
-    width: 100%;
-    height: 100%;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    background-color: var(--deep-navy);
-}
-
-@keyframes spin {
-    0% { transform: rotate(0deg); }
-    100% { transform: rotate(360deg); }
-}
-
-.spinner {
-    border: 4px solid rgba(255, 255, 255, 0.2);
-    border-left-color: var(--sincro-blue);
-    border-radius: 50%;
-    width: 40px;
-    height: 40px;
-    animation: spin 1s linear infinite;
-}
-
-
-.top {
-  position: absolute;
-  top: 0px;
-  left: 50%;
-  transform: translateX(-50%);
-  width: 40%;
-  height: 22px;
-  background-color: black;
-  border-bottom-left-radius: 12px;
-  border-bottom-right-radius: 12px;
-  z-index: 10;
-}
-
-.speaker {
-  position: absolute;
-  top: 50%;
-  left: 50%;
-  transform: translate(-50%, -50%);
-  width: 45%;
-  height: 3px;
-  border-radius: 3px;
-  background-color: rgb(20, 20, 20);
-}
-
-.camera {
-  position: absolute;
-  top: 50%;
-  left: 15%;
-  transform: translateY(-50%);
-  width: 8px;
-  height: 8px;
-  border-radius: 50%;
-  background-color: rgb(25, 25, 25);
-}
-
-.camera .int {
-    position: absolute;
-    width: 4px;
-    height: 4px;
-    border-radius: 50%;
-    top: 50%;
-    left: 50%;
-    transform: translate(-50%, -50%);
-    background-color: rgba(0, 0, 255, 0.1);
-}
-
-.btn1, .btn2, .btn3, .btn4 {
-  position: absolute;
-  width: 3px; 
-  background: #222;
-}
-
-.btn1 { /* Silencio */
-    height: 30px;
-    top: 15%;
-    left: -4px;
-    border-top-left-radius: 3px;
-    border-bottom-left-radius: 3px;
-}
-
-.btn2, .btn3 { /* Volumen */
-    height: 50px;
-    left: -4px;
-    border-top-left-radius: 3px;
-    border-bottom-left-radius: 3px;
-}
-
-.btn2 { top: 22%; }
-.btn3 { top: 35%; }
-
-.btn4 { /* Bloqueo */
-    height: 80px;
-    right: -4px;
-    top: 25%;
-    border-top-right-radius: 3px;
-    border-bottom-right-radius: 3px;
-}
-
-/* --- FORM SELECT NORMALIZATION (STRUCTURAL FIX) --- */
-/*
-  This block provides a robust reset for the <select> element across browsers,
-  addressing the persistent "duplicate arrow" issue.
-
-  1.  **Force Appearance Reset:** It uses a highly specific selector targeting the
-      exact component structure and `!important` to override stubborn user-agent stylesheets.
-      This removes the native browser-default dropdown arrow.
-
-  2.  **Pseudo-element Cleanup:** It explicitly targets and hides pseudo-elements
-      like `::-ms-expand` used by Internet Explorer and Edge for the same purpose.
-*/
-form .relative select.appearance-none {
-    -webkit-appearance: none !important;
-    -moz-appearance: none !important;
-    appearance: none !important;
-}
-
-/* Hide the default arrow in IE 10 and 11 */
-form .relative select.appearance-none::-ms-expand {
-    display: none !important;
+/* === Clases de Utilidad Personalizadas para Scroll === */
+@layer utilities {
+  .no-scrollbar::-webkit-scrollbar {
+      display: none;
+  }
+  .no-scrollbar {
+      -ms-overflow-style: none;  /* IE and Edge */
+      scrollbar-width: none;  /* Firefox */
+  }
 }

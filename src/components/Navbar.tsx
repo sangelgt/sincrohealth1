@@ -1,19 +1,25 @@
 import React, { useState, useEffect } from 'react';
-import { Link, useLocation } from 'react-router-dom';
+import { Link, useLocation, useNavigate } from 'react-router-dom';
 
 const navLinks = [
   { id: 'hero', title: 'Inicio' },
   { id: 'caos', title: 'El Desafío' },
   { id: 'solucion', title: 'IA Humana' },
   { id: 'beneficios', title: 'Métricas' },
+  { id: 'planes', title: 'Planes' },
 ];
 
 const Navbar: React.FC = () => {
   const location = useLocation();
+  const navigate = useNavigate();
   const [activeSection, setActiveSection] = useState('hero');
+  const isHomePage = location.pathname === '/';
 
   useEffect(() => {
-    if (location.pathname !== '/') return;
+    if (!isHomePage) {
+      setActiveSection('');
+      return;
+    }
 
     const observer = new IntersectionObserver(
       (entries) => {
@@ -23,81 +29,70 @@ const Navbar: React.FC = () => {
           }
         });
       },
-      // CORREGIDO: Se amplía el margen para una detección más estable.
-      // Una sección se activa cuando entra en la mitad superior de la pantalla.
-      { rootMargin: '0px 0px -50% 0px' } 
+      { rootMargin: '-40% 0px -60% 0px' } 
     );
 
-    navLinks.forEach((link) => {
-      const element = document.getElementById(link.id);
-      if (element) {
-        observer.observe(element);
-      }
-    });
+    const sections = document.querySelectorAll('section[id]');
+    sections.forEach((section) => observer.observe(section));
 
-    return () => observer.disconnect();
-  }, [location.pathname]);
+    return () => {
+      sections.forEach((section) => observer.unobserve(section));
+    };
+  }, [isHomePage]);
 
   const handleNavClick = (e: React.MouseEvent<HTMLAnchorElement>, id: string) => {
     e.preventDefault();
-    const element = document.getElementById(id);
-    if (element) {
-      element.scrollIntoView({ behavior: 'smooth' });
-    }
-  };
-  
-    const handleHomeClick = (e: React.MouseEvent<HTMLAnchorElement>) => {
-    if (location.pathname === '/') {
-      e.preventDefault();
-      window.scrollTo({
-        top: 0,
-        behavior: 'smooth'
-      });
-    }
-  };
-
-  const handleRegisterClick = (e: React.MouseEvent<HTMLAnchorElement>) => {
-    if (location.pathname === '/') {
-      e.preventDefault();
-      const element = document.getElementById('contacto');
+    if (isHomePage) {
+      const element = document.getElementById(id);
       if (element) {
         element.scrollIntoView({ behavior: 'smooth' });
+        window.history.pushState(null, '', `#${id}`);
       }
+    } else {
+      navigate(`/#${id}`);
     }
   };
 
+  const handleHomeClick = (e: React.MouseEvent<HTMLAnchorElement>) => {
+    if (isHomePage) {
+        e.preventDefault();
+        window.scrollTo({ top: 0, behavior: 'smooth' });
+        window.history.pushState(null, '', ' ');
+    }
+    // If not on home page, the Link component will handle navigation to '/'
+  };
 
   return (
-    <header className="fixed top-0 left-0 right-0 z-50 flex justify-center py-6 px-4">
-      <nav className="max-w-6xl w-full bg-white/70 backdrop-blur-xl border border-white/50 px-6 md:px-10 h-24 md:h-32 flex items-center justify-between shadow-sm rounded-[40px] md:rounded-full">
-        <Link to="/" className="flex items-center group" onClick={handleHomeClick}>
-          <img 
-            src="https://ddnnmcfbgqnhcuozurio.supabase.co/storage/v1/object/public/sincrohealth/logos/isotipo.webp" 
-            alt="SincroHealth AI" 
-            className="h-20 md:h-24 w-auto transition-transform group-hover:scale-105"
-          />
+    <header className="fixed top-0 left-0 right-0 z-50 flex justify-center py-4 px-4">
+      <nav className="max-w-6xl w-full bg-white/70 backdrop-blur-xl border border-white/50 px-8 h-20 flex items-center justify-between shadow-sm rounded-full">
+        <Link to="/" className="flex items-center" onClick={handleHomeClick}>
+            <img 
+                src="https://ddnnmcfbgqnhcuozurio.supabase.co/storage/v1/object/public/sincrohealth/logos/isotipo.webp" 
+                alt="SincroHealth AI Isotipo" 
+                className="h-12 object-contain p-0 m-0"
+            />
         </Link>
         
-        <div className="hidden md:flex items-center gap-10">
-          {navLinks.map(link => (
-            <a 
-              key={link.id}
-              href={`/#${link.id}`}
-              onClick={(e) => handleNavClick(e, link.id)}
-              className={`text-[10px] uppercase tracking-widest font-semibold transition-colors hover:text-[#137fec] ${
-                activeSection === link.id ? 'text-[#137fec]' : 'text-[#8D8273]'
-              }`}>
-              {link.title}
-            </a>
-          ))}
+        <div className="hidden md:flex items-center gap-8">
+            {navLinks.map(link => (
+                <a 
+                    key={link.id}
+                    href={isHomePage ? `#${link.id}` : `/#${link.id}`}
+                    onClick={(e) => handleNavClick(e, link.id)}
+                    className={`nav-link hover:text-[var(--sincro-blue)] transition-colors ${
+                        activeSection === link.id && isHomePage ? 'text-[var(--sincro-blue)]' : 'text-[var(--taupe)]'
+                    }`}>
+                    {link.title}
+                </a>
+            ))}
         </div>
         
         <a 
-          href="/#contacto"
-          onClick={handleRegisterClick}
-          className="bg-[#137fec] text-white px-8 py-3 rounded-full text-sm font-semibold hover:bg-blue-600 transition-all shadow-lg shadow-blue-500/20 active:scale-95"
+          href={isHomePage ? "#registro" : "/#registro"}
+          onClick={(e) => handleNavClick(e, 'registro')}
+          className="bg-[var(--sincro-blue)] text-white px-4 py-2 rounded-full text-sm font-semibold hover:bg-blue-600 transition-all shadow-lg shadow-blue-500/20 whitespace-nowrap"
         >
-          Obtener Demo
+          Solicitar Prueba Gratuita
         </a>
       </nav>
     </header>

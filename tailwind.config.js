@@ -1,4 +1,3 @@
-
 import forms from '@tailwindcss/forms';
 import typography from '@tailwindcss/typography';
 import aspectRatio from '@tailwindcss/aspect-ratio';
@@ -17,6 +16,11 @@ export default {
         'taupe': '#8D8273',
         'deep-navy': '#0A192F',
         'cloud-white': '#F8FAFC',
+      },
+      fontFamily: {
+        'outfit': ['Outfit', 'sans-serif'],
+        'playfair': ['Playfair Display', 'serif'],
+        'inter': ['Inter', 'sans-serif'],
       }
     },
   },
