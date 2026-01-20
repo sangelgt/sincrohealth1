@@ -1,10 +1,11 @@
-import React, { useEffect } from 'react';
+import React, { useEffect, Suspense, lazy } from 'react';
 import { useLocation } from 'react-router-dom';
 import { motion } from 'framer-motion';
-import ContactForm from '../components/ContactForm';
-import AnimatedPhone from '../components/AnimatedPhone';
-import PricingSection from '../components/PricingSection';
 import { supabase } from '../lib/supabase'; // Import supabase
+
+const ContactForm = lazy(() => import('../components/ContactForm'));
+const AnimatedPhone = lazy(() => import('../components/AnimatedPhone'));
+const PricingSection = lazy(() => import('../components/PricingSection'));
 
 const chaosCards = [
   { icon: 'air', title: 'Recuperar el aliento', description: 'Diga adiós al Burnout. Eliminamos el ruido administrativo para que su equipo vuelva a conectar con el propósito de sanar.' },
@@ -19,9 +20,9 @@ const solutions = [
 ];
 
 const solutionImages = [
-    "https://ddnnmcfbgqnhcuozurio.supabase.co/storage/v1/object/public/sincrohealth/solucion%201%20.webp",
-    "https://ddnnmcfbgqnhcuozurio.supabase.co/storage/v1/object/public/sincrohealth/solucion2%20(1).webp",
-    "https://ddnnmcfbgqnhcuozurio.supabase.co/storage/v1/object/public/sincrohealth/solucion%203.webp"
+    {src: "https://ddnnmcfbgqnhcuozurio.supabase.co/storage/v1/object/public/sincrohealth/solucion%201%20.webp", width: 340, height: 220},
+    {src: "https://ddnnmcfbgqnhcuozurio.supabase.co/storage/v1/object/public/sincrohealth/solucion2%20(1).webp", width: 340, height: 220},
+    {src: "https://ddnnmcfbgqnhcuozurio.supabase.co/storage/v1/object/public/sincrohealth/solucion%203.webp", width: 340, height: 220}
 ];
 
 const metrics = [
@@ -32,7 +33,7 @@ const metrics = [
 ];
 const benefits = [
     { title: "Diagnóstico Operativo GRATUITO", description: "Análisis profundo de sus cuellos de botella actuales." },
-    { title: "Acceso a Demo por 30 días", description: "Experimente el ecosistema completo sin restricciones." },
+    { title: "Acceso a prueba por 30 días", description: "Experimente el ecosistema completo sin restricciones." },
     { title: "Plan de Sincronización Personalizado", description: "Estrategia a medida adaptada a su volumen de pacientes." },
     { title: "Soporte Prioritario de Implementación", description: "Un consultor dedicado para su fase de transición." }
 ];
@@ -107,6 +108,7 @@ const LandingPage: React.FC = () => {
            <div className="absolute top-[-10%] right-[-10%] w-[60%] h-[60%] bg-blue-100/30 rounded-full blur-[120px]"></div>
             <div className="absolute bottom-[-10%] left-[-10%] w-[50%] h-[50%] bg-orange-50/50 rounded-full blur-[100px]"></div>
             <div className="max-w-5xl mx-auto px-6 text-center relative z-10">
+                <img src="https://ddnnmcfbgqnhcuozurio.supabase.co/storage/v1/object/public/sincrohealth/logos/logo-sincrohealth-ai.webp" alt="Logo SincroHealth AI" width="300" height="80" fetchPriority="high" className="mx-auto mb-8" />
                 <h1 className="hero-title text-5xl md:text-7xl font-light text-slate-900 mb-6">
                     Transforme su clínica con <span className="font-semibold text-[var(--sincro-blue)]">SincroHealth AI</span>
                 </h1>
@@ -118,6 +120,7 @@ const LandingPage: React.FC = () => {
                         className="cta-button bg-[var(--sincro-blue)] text-white text-lg font-medium hover:scale-105 shadow-2xl shadow-blue-500/30 text-center"
                         href="#registro"
                         onClick={(e) => handleCTAClick(e, 'hero', 'Hero')} // Passed 'Hero' as seccion
+                        aria-label="Solicitar Prueba Gratuita de SincroHealth AI"
                     >
                         Solicitar Prueba Gratuita
                     </a>
@@ -128,6 +131,7 @@ const LandingPage: React.FC = () => {
                             e.preventDefault();
                             handleScroll('#ia-humana');
                         }}
+                        aria-label="Conocer más sobre la IA Humana de SincroHealth"
                     >
                         Conoce nuestra IA Humana <span className="material-symbols-outlined">arrow_forward</span>
                     </a>
@@ -173,9 +177,9 @@ const LandingPage: React.FC = () => {
                         </div>
                     </div>
                     <div className="relative py-12 flex flex-col gap-6 items-center">
-                        {solutionImages.map((src, index) => (
+                        {solutionImages.map((image, index) => (
                             <motion.div key={index} className="w-full max-w-[340px] h-[220px] rounded-2xl shadow-lg overflow-hidden" initial={{ opacity: 0, y: 50 }} whileInView={{ opacity: 1, y: 0 }} transition={{ duration: 0.5, delay: index * 0.1 }} viewport={{ once: true }} whileHover={{ scale: 1.05, zIndex: 50}} style={{ zIndex: 30 - index * 10, transform: `translateX(${(index - 1) * -2}rem)` }}>
-                                <img src={src} className="w-full h-full object-cover" alt={`Solución ${index + 1}`} />
+                                <img src={image.src} width={image.width} height={image.height} loading="lazy" className="w-full h-full object-cover" alt={`Solución ${index + 1}`} />
                             </motion.div>
                         ))}\
                     </div>
@@ -202,7 +206,9 @@ const LandingPage: React.FC = () => {
                             </div>
                         </div>
                         <div className="flex justify-center items-center">
-                            <AnimatedPhone />
+                           <Suspense fallback={<div>Cargando...</div>}>
+                              <AnimatedPhone />
+                           </Suspense>
                         </div>
                     </div>
                 </div>
@@ -210,7 +216,9 @@ const LandingPage: React.FC = () => {
         </section>
             
         <section id="planes" className="py-32 px-6">
+          <Suspense fallback={<div>Cargando...</div>}>
             <PricingSection handleCTAClick={handleCTAClick} />
+          </Suspense>
         </section>
 
         <section id="registro" className="py-32 px-6">
@@ -240,7 +248,9 @@ const LandingPage: React.FC = () => {
                     </div>
                     <div className="lg:col-span-7">
                         <div className="organic-card p-10 md:p-14 bg-white shadow-2xl border-t-8 border-[var(--sincro-blue)]/10">
+                          <Suspense fallback={<div>Cargando...</div>}>
                             <ContactForm />
+                          </Suspense>
                         </div>
                     </div>
                 </div>

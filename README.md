@@ -217,7 +217,7 @@ const plans = [
       // ... más features
     ],
     impact: "Recupere 10 horas...", // Texto de la tarjeta de impacto
-    buttonText: "Solicitar Demo...", // Texto del botón de CTA
+    buttonText: "Solicitar prueba...", // Texto del botón de CTA
     isRecommended: false // `true` si es el plan recomendado (aplica estilos especiales)
   },
   // ... más planes

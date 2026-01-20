@@ -23,7 +23,7 @@ const AnimatedPhone: React.FC = () => {
             <img
               src={imageUrl}
               className="w-full h-auto object-top"
-              alt="Métricas de SincroHealth AI demostrando reducción de ausentismo y aumento de ROI"
+              alt="Métricas de SincroHealth AI pruebastrando reducción de ausentismo y aumento de ROI"
             />
         </div>
       </div>

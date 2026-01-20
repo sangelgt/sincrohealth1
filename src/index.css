@@ -8,7 +8,7 @@
   :root {
     --sincro-blue: #137fec;
     --cream: #FDFBF7;
-    --taupe: #8D8273;
+    --taupe: #756A5A; /* Ajustado para WCAG AA */
     --deep-navy: #0A192F;
     --medical-green: #e8f5e9;
     --soft-shadow: 0 20px 50px -12px rgba(141, 130, 115, 0.15);
@@ -24,6 +24,32 @@
   html {
     scroll-behavior: smooth;
   }
+
+  /* Optimización de carga de fuentes */
+  @font-face {
+    font-family: 'Outfit';
+    font-style: normal;
+    font-weight: 300 700;
+    font-display: swap;
+    src: url(https://fonts.gstatic.com/s/outfit/v11/QGYvz_MVcBeNP4NJtEtq.p.woff2) format('woff2');
+  }
+
+  @font-face {
+    font-family: 'Playfair Display';
+    font-style: normal;
+    font-weight: 400 700;
+    font-display: swap;
+    src: url(https://fonts.gstatic.com/s/playfairdisplay/v30/nuFvD-vYSZviVYUb_rj3ij__anPXJzDwcbmjWMI.woff2) format('woff2');
+  }
+
+  @font-face {
+    font-family: 'Inter';
+    font-style: normal;
+    font-weight: 300 600;
+    font-display: swap;
+    src: url(https://fonts.gstatic.com/s/inter/v12/UcC73FwrK3iLTeHuS_fvQtMwCp50KnMa1ZL7.woff2) format('woff2');
+  }
+
 }
 
 /* === Clases de Componentes Personalizados === */

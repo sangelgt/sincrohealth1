@@ -49,7 +49,7 @@ const plans = [
     priceUnit: "Personalizada",
     slogan: "Visibilidad financiera y arquitectura interoperable.",
     features: [
-      { title: "Visibilidad Económica Real-Time", description: "Visualiza pérdida financiera por demoras y valor de cartera." },
+      { title: "Visibilidad Económica Real-Time", description: "Visualiza pérdida financiera por pruebaras y valor de cartera." },
       { title: "Interoperabilidad HL7/FHIR", description: "Integración profunda y segura con sistemas de salud existentes." },
       { title: "Ecosistema Multi-Agente", description: "IAs dedicadas a auditoría, facturación y validación de seguros." },
     ],
