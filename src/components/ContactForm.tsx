@@ -155,6 +155,7 @@ const ContactForm: React.FC = () => {
                         name="monthlyPatients"
                         value={formData.monthlyPatients}
                         onChange={handleChange}
+                        aria-label="Cantidad de pacientes"
                     >
                         <option value="">Seleccione un rango...</option>
                         <option value="1-100">1 - 100 pacientes</option>

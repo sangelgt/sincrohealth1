@@ -1,22 +1,22 @@
-import React, { useEffect, Suspense, lazy } from 'react';
-import { useLocation } from 'react-router-dom';
-import { motion } from 'framer-motion';
-import { supabase } from '../lib/supabase'; // Import supabase
+import React, { useEffect, Suspense, lazy } from "react";
+import { useLocation } from "react-router-dom";
+import { motion } from "framer-motion";
+import { supabase } from "../lib/supabase"; // Import supabase
 
-const ContactForm = lazy(() => import('../components/ContactForm'));
-const AnimatedPhone = lazy(() => import('../components/AnimatedPhone'));
-const PricingSection = lazy(() => import('../components/PricingSection'));
+const ContactForm = lazy(() => import("../components/ContactForm"));
+const AnimatedPhone = lazy(() => import("../components/AnimatedPhone"));
+const PricingSection = lazy(() => import("../components/PricingSection"));
 
 const chaosCards = [
-  { icon: 'air', title: 'Recuperar el aliento', description: 'Diga adiós al Burnout. Eliminamos el ruido administrativo para que su equipo vuelva a conectar con el propósito de sanar.' },
-  { icon: 'bubble_chart', title: 'Sincronización fluida', description: 'Adiós al Info Chaos. Un flujo de datos armónico donde cada mensaje y cita encuentra su lugar sin esfuerzo humano.' },
-  { icon: 'expand', title: 'Crezca sin esfuerzo', description: 'Escalabilidad orgánica. Nuestra arquitectura se expande silenciosamente a medida que su clínica conquista nuevos horizontes.' },
-  { icon: 'water_drop', title: 'Asegure cada gota', description: 'Detenga la Fuga de Ingresos. Optimizamos cada recurso con la delicadeza de un relojero y la visión de un estratega.' }
+  { icon: "air", title: "Recuperar el aliento", description: "Diga adiós al Burnout. Eliminamos el ruido administrativo para que su equipo vuelva a conectar con el propósito de sanar." },
+  { icon: "bubble_chart", title: "Sincronización fluida", description: "Adiós al Info Chaos. Un flujo de datos armónico donde cada mensaje y cita encuentra su lugar sin esfuerzo humano." },
+  { icon: "expand", title: "Crezca sin esfuerzo", description: "Escalabilidad orgánica. Nuestra arquitectura se expande silenciosamente a medida que su clínica conquista nuevos horizontes." },
+  { icon: "water_drop", title: "Asegure cada gota", description: "Detenga la Fuga de Ingresos. Optimizamos cada recurso con la delicadeza de un relojero y la visión de un estratega." }
 ];
 const solutions = [
-  { id: '01', title: 'Booking Booster', description: 'Natural Agenda: Un ecosistema de citas que respira. Algoritmos predictivos que entienden el contexto vital del paciente para una programación fluida y sin solapamientos.' },
-  { id: '02', title: 'Triaje Empático', description: 'Priority & Sensitivity: Una acogida digital que prioriza la urgencia clínica sin perder la calidez humana, identificando matices emocionales en cada consulta inicial.' },
-  { id: '03', title: 'Bóveda WhatsApp-to-EHR', description: 'Invisible Security: Conversaciones cifradas que se integran automáticamente en el historial clínico, garantizando que ninguna palabra del paciente se pierda en el vacío.' }
+  { id: "01", title: "Booking Booster", description: "Natural Agenda: Un ecosistema de citas que respira. Algoritmos predictivos que entienden el contexto vital del paciente para una programación fluida y sin solapamientos." },
+  { id: "02", title: "Triaje Empático", description: "Priority & Sensitivity: Una acogida digital que prioriza la urgencia clínica sin perder la calidez humana, identificando matices emocionales en cada consulta inicial." },
+  { id: "03", title: "Bóveda WhatsApp-to-EHR", description: "Invisible Security: Conversaciones cifradas que se integran automáticamente en el historial clínico, garantizando que ninguna palabra del paciente se pierda en el vacío." }
 ];
 
 const solutionImages = [
@@ -43,21 +43,21 @@ const LandingPage: React.FC = () => {
 
   useEffect(() => {
     if (location.hash) {
-      const id = location.hash.replace('#', '');
+      const id = location.hash.replace("#", "");
       const element = document.getElementById(id);
       if (element) {
         setTimeout(() => {
-          element.scrollIntoView({ behavior: 'smooth', block: 'start' });
+          element.scrollIntoView({ behavior: "smooth", block: "start" });
         }, 100);
       }
     }
   }, [location.hash]);
 
   const handleScroll = (id: string) => {
-    const target = document.getElementById(id.replace('#', ''));
+    const target = document.getElementById(id.replace("#", ""));
     if (target) {
-      target.scrollIntoView({ behavior: 'smooth' });
-      window.history.pushState(null, '', `/#${id.replace('#', '')}`);
+      target.scrollIntoView({ behavior: "smooth" });
+      window.history.pushState(null, "", `/#${id.replace("#", "")}`);
     }
   };
 
@@ -65,38 +65,38 @@ const LandingPage: React.FC = () => {
     e.preventDefault();
     
     const targetUrl = new URL(window.location.href);
-    targetUrl.searchParams.set('source', source);
-    window.history.pushState({ path: targetUrl.href }, '', targetUrl.href);
+    targetUrl.searchParams.set("source", source);
+    window.history.pushState({ path: targetUrl.href }, "", targetUrl.href);
     
     // Supabase insert for Interacciones
-    console.log("Insertando en:", 'Interacciones'); // Added console.log
+    console.log("Insertando en:", "Interacciones"); // Added console.log
     try {
       const { data, error } = await supabase
-        .from('Interacciones')
+        .from("Interacciones")
         .insert([
           { boton_id: source, seccion: seccion, fecha: new Date().toISOString() }, // Using seccion parameter
         ]);
       if (error) {
-        console.error('Error al insertar interacción en Supabase:', error);
-        alert('Hubo un problema al registrar tu interés. Por favor, inténtalo de nuevo más tarde.'); // User-friendly error message
+        console.error("Error al insertar interacción en Supabase:", error);
+        alert("Hubo un problema al registrar tu interés. Por favor, inténtalo de nuevo más tarde."); // User-friendly error message
       } else {
-        console.log('Interacción registrada en Supabase:', data);
+        console.log("Interacción registrada en Supabase:", data);
       }
     } catch (error) {
-      console.error('Error en la conexión a Supabase para interacciones:', error);
-      alert('No se pudo conectar con el servicio. Por favor, verifica tu conexión a internet.'); // User-friendly connection error
+      console.error("Error en la conexión a Supabase para interacciones:", error);
+      alert("No se pudo conectar con el servicio. Por favor, verifica tu conexión a internet."); // User-friendly connection error
     }
 
-    console.log('EVENT: CTA_CLICK', {
+    console.log("EVENT: CTA_CLICK", {
         event_category: seccion, // Using seccion for category
         event_label: source,
     });
     
-    const registrationSection = document.getElementById('registro');
+    const registrationSection = document.getElementById("registro");
     if (registrationSection) {
       registrationSection.scrollIntoView({
-        behavior: 'smooth',
-        block: 'start'
+        behavior: "smooth",
+        block: "start"
       });
     }
   };
@@ -108,7 +108,7 @@ const LandingPage: React.FC = () => {
            <div className="absolute top-[-10%] right-[-10%] w-[60%] h-[60%] bg-blue-100/30 rounded-full blur-[120px]"></div>
             <div className="absolute bottom-[-10%] left-[-10%] w-[50%] h-[50%] bg-orange-50/50 rounded-full blur-[100px]"></div>
             <div className="max-w-5xl mx-auto px-6 text-center relative z-10">
-                <img src="https://ddnnmcfbgqnhcuozurio.supabase.co/storage/v1/object/public/sincrohealth/logos/logo-sincrohealth-ai.webp" alt="Logo SincroHealth AI" width="300" height="80" fetchPriority="high" className="mx-auto mb-8" />
+                
                 <h1 className="hero-title text-5xl md:text-7xl font-light text-slate-900 mb-6">
                     Transforme su clínica con <span className="font-semibold text-[var(--sincro-blue)]">SincroHealth AI</span>
                 </h1>
@@ -119,7 +119,7 @@ const LandingPage: React.FC = () => {
                     <a 
                         className="cta-button bg-[var(--sincro-blue)] text-white text-lg font-medium hover:scale-105 shadow-2xl shadow-blue-500/30 text-center"
                         href="#registro"
-                        onClick={(e) => handleCTAClick(e, 'hero', 'Hero')} // Passed 'Hero' as seccion
+                        onClick={(e) => handleCTAClick(e, "hero", "Hero")} // Passed "Hero" as seccion
                         aria-label="Solicitar Prueba Gratuita de SincroHealth AI"
                     >
                         Solicitar Prueba Gratuita
@@ -129,7 +129,7 @@ const LandingPage: React.FC = () => {
                         href="#ia-humana"
                         onClick={(e) => {
                             e.preventDefault();
-                            handleScroll('#ia-humana');
+                            handleScroll("#ia-humana");
                         }}
                         aria-label="Conocer más sobre la IA Humana de SincroHealth"
                     >
@@ -181,7 +181,7 @@ const LandingPage: React.FC = () => {
                             <motion.div key={index} className="w-full max-w-[340px] h-[220px] rounded-2xl shadow-lg overflow-hidden" initial={{ opacity: 0, y: 50 }} whileInView={{ opacity: 1, y: 0 }} transition={{ duration: 0.5, delay: index * 0.1 }} viewport={{ once: true }} whileHover={{ scale: 1.05, zIndex: 50}} style={{ zIndex: 30 - index * 10, transform: `translateX(${(index - 1) * -2}rem)` }}>
                                 <img src={image.src} width={image.width} height={image.height} loading="lazy" className="w-full h-full object-cover" alt={`Solución ${index + 1}`} />
                             </motion.div>
-                        ))}\
+                        ))}
                     </div>
                 </div>
             </div>
@@ -202,7 +202,7 @@ const LandingPage: React.FC = () => {
                                         <p className="text-xs text-[var(--deep-navy)] uppercase tracking-widest font-bold">{metric.label}</p>
                                         <p className="text-[10px] text-[var(--deep-navy)] mt-2">{metric.sublabel}</p>
                                     </div>
-                                ))}\
+                                ))}
                             </div>
                         </div>
                         <div className="flex justify-center items-center">
@@ -237,7 +237,7 @@ const LandingPage: React.FC = () => {
                                     <p className="text-sm text-[var(--taupe)]">{benefit.description}</p>
                                 </div>
                             </div>
-                        ))}\
+                        ))}
                         <div className="mt-8 p-6 rounded-[40px] border border-blue-100 bg-blue-50/30">
                             <p className="text-[var(--taupe)] text-sm italic leading-relaxed">"La integración con SincroHealth nos permitió recuperar el enfoque clínico en menos de una semana. La carga administrativa simplemente desapareció."</p>
                             <div className="mt-4 flex items-center gap-3">

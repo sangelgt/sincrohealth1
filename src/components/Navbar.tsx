@@ -56,6 +56,8 @@ const Navbar = () => {
           <Link to="/" className="-m-1.5 p-1.5">
             <span className="sr-only">SincroHealth AI</span>
             <img
+              width={32}
+              height={32}
               className="h-8 w-auto"
               src="https://ddnnmcfbgqnhcuozurio.supabase.co/storage/v1/object/public/sincrohealth/logos/isotipo.webp"
               alt="SincroHealth AI Logo"
@@ -107,6 +109,8 @@ const Navbar = () => {
             <Link to="/" className="-m-1.5 p-1.5">
               <span className="sr-only">SincroHealth AI</span>
               <img
+                width={32}
+                height={32}
                 className="h-8 w-auto"
                 src="https://ddnnmcfbgqnhcuozurio.supabase.co/storage/v1/object/public/sincrohealth/logos/isotipo.webp"
                 alt="SincroHealth AI Logo"
