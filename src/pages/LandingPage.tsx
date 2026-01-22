@@ -20,9 +20,9 @@ const solutions = [
 ];
 
 const solutionImages = [
-    {src: "https://ddnnmcfbgqnhcuozurio.supabase.co/storage/v1/object/public/kura/solucion%201%20.webp", width: 340, height: 220},
-    {src: "https://ddnnmcfbgqnhcuozurio.supabase.co/storage/v1/object/public/kura/solucion2%20(1).webp", width: 340, height: 220},
-    {src: "https://ddnnmcfbgqnhcuozurio.supabase.co/storage/v1/object/public/kura/solucion%203.webp", width: 340, height: 220}
+    {src: "https://ddnnmcfbgqnhcuozurio.supabase.co/storage/v1/object/public/sincrohealth/solucion%201%20.webp", width: 340, height: 220},
+    {src: "https://ddnnmcfbgqnhcuozurio.supabase.co/storage/v1/object/public/sincrohealth/solucion2%20(1).webp", width: 340, height: 220},
+    {src: "https://ddnnmcfbgqnhcuozurio.supabase.co/storage/v1/object/public/sincrohealth/solucion%203.webp", width: 340, height: 220}
 ];
 
 const metrics = [
@@ -57,14 +57,7 @@ const LandingPage: React.FC = () => {
     <div className="text-slate-800 premium-gradient">
 
         <section id="hero" className="relative min-h-screen flex items-center justify-center pt-24 pb-12 overflow-hidden">
-           <img 
-             src="https://vsqizpnyisdtmshvshre.supabase.co/storage/v1/object/public/SincroHealth/banner.webp"
-             alt="Fondo Kura AI"
-             className="absolute inset-0 w-full h-full object-cover -z-10"
-             fetchPriority="high"
-             width="1920"
-             height="1080"
-           />
+           <img src="https://ddnnmcfbgqnhcuozurio.supabase.co/storage/v1/object/public/sincrohealth/baner%20/%20fondos%20/banner.webp" className="absolute inset-0 w-full h-full object-cover -z-10" fetchPriority="high" />
            <div className="absolute top-[-10%] right-[-10%] w-[60%] h-[60%] bg-blue-100/30 rounded-full blur-[120px]"></div>
             <div className="absolute bottom-[-10%] left-[-10%] w-[50%] h-[50%] bg-orange-50/50 rounded-full blur-[100px]"></div>
             <div className="max-w-5xl mx-auto px-6 relative z-10">
@@ -170,14 +163,7 @@ const LandingPage: React.FC = () => {
         </section>
 
         <section id="registro" className="relative min-h-screen flex items-center py-20 px-6">
-        <img 
-          src="https://vsqizpnyisdtmshvshre.supabase.co/storage/v1/object/public/SincroHealth/Fondo%20de%20Dashboard.webp"
-          alt="Dashboard Background"
-          className="absolute inset-0 w-full h-full object-cover -z-10"
-          loading="lazy"
-          width="1920"
-          height="1080"
-        />
+        <img src="https://ddnnmcfbgqnhcuozurio.supabase.co/storage/v1/object/public/sincrohealth/baner%20/%20fondos%20/Fondo%20de%20Dashboard.webp" className="absolute inset-0 w-full h-full object-cover -z-10" loading="lazy" />
 
             <div className="max-w-7xl mx-auto relative z-10">
                 <div className="text-center mb-16">

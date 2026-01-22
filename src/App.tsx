@@ -6,6 +6,7 @@ import Footer from './components/Footer';
 import LandingPage from './pages/LandingPage';
 import PrivacyPolicy from './pages/PrivacyPolicy';
 import Terms from './pages/Terms';
+import { SpeedInsights } from '@vercel/speed-insights/react';
 
 const ScrollToTop = () => {
   const { pathname } = useLocation();
@@ -32,6 +33,7 @@ const App: React.FC = () => {
         </main>
         <Footer />
       </div>
+      <SpeedInsights />
     </Router>
   );
 };
