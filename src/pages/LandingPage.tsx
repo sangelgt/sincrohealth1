@@ -73,8 +73,12 @@ const LandingPage: React.FC = () => {
            {/* Fondo de pantalla completa ESTÁTICO */}
             <img
                 className="absolute inset-0 w-full h-full object-cover -z-10"
-                src="https://ddnnmcfbgqnhcuozurio.supabase.co/storage/v1/object/public/kura/baner%20/%20fondos%20/banner.webp"
-                alt="Fondo Kura AI"
+                src="https://ddnnmcfbgqnhcuozurio.supabase.co/storage/v1/object/public/sincrohealth/baner%20/%20fondos%20/banner.webp"
+                alt="Fondo Tecnológico Kura AI"
+                width="1920"
+                height="1080"
+                fetchpriority="high"
+                loading="eager"
             />
            <div className="absolute top-[-10%] right-[-10%] w-[60%] h-[60%] bg-blue-100/30 rounded-full blur-[120px]"></div>
             <div className="absolute bottom-[-10%] left-[-10%] w-[50%] h-[50%] bg-orange-50/50 rounded-full blur-[100px]"></div>
@@ -90,8 +94,8 @@ const LandingPage: React.FC = () => {
                         <a href="#registro" className="cta-button bg-[var(--sincro-blue)] text-white text-lg font-medium hover:scale-105 shadow-2xl shadow-blue-500/30 text-center" onClick={(e) => handleNavClick(e, 'registro')}>
                             Solicitar Prueba Gratuita
                         </a>
-                        <a 
-                            className="text-[var(--taupe)] font-semibold flex items-center gap-2 hover:translate-x-1 transition-transform" 
+                        <a
+                            className="text-[var(--taupe)] font-semibold flex items-center gap-2 hover:translate-x-1 transition-transform"
                             href="#ia-humana"
                             onClick={(e) => handleNavClick(e, "ia-humana")}
                             aria-label="Conocer más sobre la IA Humana de Kura"
@@ -150,7 +154,7 @@ const LandingPage: React.FC = () => {
                 </div>
             </div>
         </section>
-      
+
         <section id="metricas" className="py-32 px-6">
             <div className="max-w-7xl mx-auto">
                 <div className="organic-card p-12 md:p-20 bg-slate-50 text-[var(--deep-navy)] relative overflow-hidden">
@@ -161,7 +165,7 @@ const LandingPage: React.FC = () => {
                             <p className="text-[var(--deep-navy)] mb-12 text-lg font-light">Nuestros resultados no solo son números; son minutos recuperados para lo que realmente importa: la atención al paciente.</p>
                             <div className="grid grid-cols-2 gap-12">
                                 {metrics.map(metric => (
-                                    <div key={metric.label}>
+                                    <div key={metric.label}>\
                                         <p className="text-5xl font-light text-[var(--sincro-blue)] mb-2">{metric.value}</p>
                                         <p className="text-xs text-[var(--deep-navy)] uppercase tracking-widest font-bold">{metric.label}</p>
                                         <p className="text-[10px] text-[var(--deep-navy)] mt-2">{metric.sublabel}</p>
@@ -178,7 +182,7 @@ const LandingPage: React.FC = () => {
                 </div>
             </div>
         </section>
-            
+
         <section id="planes" className="py-32 px-6">
           <Suspense fallback={<div>Cargando...</div>}>
             <PricingSection />
@@ -187,15 +191,18 @@ const LandingPage: React.FC = () => {
 
         <section id="registro" className="relative min-h-screen flex items-center py-20 px-6">
             <img
-              src="https://ddnnmcfbgqnhcuozurio.supabase.co/storage/v1/object/public/kura/baner%20/%20fondos%20/Fondo%20de%20Dashboard.webp"
+              src="https://ddnnmcfbgqnhcuozurio.supabase.co/storage/v1/object/public/sincrohealth/baner%20/%20fondos%20/Fondo%20de%20Dashboard.webp"
               alt="Fondo Dashboard Kura AI"
               className="absolute inset-0 w-full h-full object-cover -z-20 opacity-100"
+              width="1920"
+              height="1080"
+              loading="lazy"
             />
-            
+
             <div className="max-w-7xl mx-auto relative z-10">
                 <div className="text-center mb-16">
                     <h2 className="text-4xl md:text-5xl font-light text-white mb-6 tracking-tight">Recupere la rentabilidad y el control de su clínica hoy</h2>
-                    <p className="text-white font-light max-w-3xl mx-auto text-lg leading-relaxed">Recupera el control de tu clínica, libera tu tiempo y optimiza tus recursos con la inteligencia artificial de Kura.</p>
+                    <p className="text-white/90 font-light max-w-3xl mx-auto text-lg leading-relaxed">Recupera el control de tu clínica, libera tu tiempo y optimiza tus recursos con la inteligencia artificial de Kura.</p>
                 </div>
                 <div className="grid lg:grid-cols-12 gap-12 items-start">
                     <div className="lg:col-span-5 space-y-6 pt-4">
