@@ -1,10 +1,10 @@
 
-# SincroHealth AI - Contexto del Proyecto
+# Kura AI - Contexto del Proyecto
 
-Este documento proporciona el contexto técnico y creativo para el mantenimiento y evolución de la plataforma SincroHealth AI.
+Este documento proporciona el contexto técnico y creativo para el mantenimiento y evolución de la plataforma Kura AI.
 
 ## 🚀 Propósito del Proyecto
-SincroHealth AI es una solución de gestión clínica de alto rendimiento diseñada bajo el concepto **"Organic Premium"**. El objetivo es proyectar serenidad, eficiencia tecnológica y un trato humano mediante una interfaz sofisticada que reduce la sensación de "caos administrativo" para el profesional médico.
+Kura AI es una solución de gestión clínica de alto rendimiento diseñada bajo el concepto **"Organic Premium"**. El objetivo es proyectar serenidad, eficiencia tecnológica y un trato humano mediante una interfaz sofisticada que reduce la sensación de "caos administrativo" para el profesional médico.
 
 ## 🛠️ Stack Tecnológico
 - **Frontend:** React 19 + TypeScript.

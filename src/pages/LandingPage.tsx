@@ -105,37 +105,44 @@ const LandingPage: React.FC = () => {
     <div className="text-slate-800 premium-gradient">
 
         <section id="hero" className="relative min-h-screen flex items-center justify-center pt-24 pb-12 overflow-hidden">
+           {/* Fondo de pantalla completa ESTÁTICO */}
+            <img
+                className="absolute inset-0 w-full h-full object-cover -z-10"
+                src="https://ddnnmcfbgqnhcuozurio.supabase.co/storage/v1/object/public/sincrohealth/baner%20/%20fondos%20/banner.webp"
+                alt="Fondo Kura AI"
+            />
            <div className="absolute top-[-10%] right-[-10%] w-[60%] h-[60%] bg-blue-100/30 rounded-full blur-[120px]"></div>
             <div className="absolute bottom-[-10%] left-[-10%] w-[50%] h-[50%] bg-orange-50/50 rounded-full blur-[100px]"></div>
-            <div className="max-w-5xl mx-auto px-6 text-center relative z-10">
-                
-                <h1 className="hero-title text-5xl md:text-7xl font-light text-slate-900 mb-6">
-                    Transforme su clínica con <span className="font-semibold text-[var(--sincro-blue)]">SincroHealth AI</span>
-                </h1>
-                <p className="text-xl md:text-2xl text-[var(--taupe)] font-light max-w-3xl mx-auto mb-12 leading-relaxed">
-                    Elevando la gestión médica hacia una experiencia de serenidad y rentabilidad sincronizada.
-                </p>
-                <div className="flex flex-col sm:flex-row gap-6 justify-center items-center">
-                    <a 
-                        className="cta-button bg-[var(--sincro-blue)] text-white text-lg font-medium hover:scale-105 shadow-2xl shadow-blue-500/30 text-center"
-                        href="#registro"
-                        onClick={(e) => handleCTAClick(e, "hero", "Hero")} // Passed "Hero" as seccion
-                        aria-label="Solicitar Prueba Gratuita de SincroHealth AI"
-                    >
-                        Solicitar Prueba Gratuita
-                    </a>
-                    <a 
-                        className="text-[var(--taupe)] font-semibold flex items-center gap-2 hover:translate-x-1 transition-transform" 
-                        href="#ia-humana"
-                        onClick={(e) => {
-                            e.preventDefault();
-                            handleScroll("#ia-humana");
-                        }}
-                        aria-label="Conocer más sobre la IA Humana de SincroHealth"
-                    >
-                        Conoce nuestra IA Humana <span className="material-symbols-outlined">arrow_forward</span>
-                    </a>
-                </div>
+            <div className="max-w-5xl mx-auto px-6 relative z-10"> {/* Modified: Removed text-center class from this div */}
+                <div className="bg-white/40 backdrop-blur-md rounded-3xl border border-white/30 shadow-2xl p-8 md:p-12 max-w-4xl mx-auto text-center"> {/* New glassmorphism card */}
+                    <h1 className="hero-title text-5xl md:text-7xl font-light text-slate-900 mb-6">
+                        Transforme su clínica con <span className="font-semibold text-[var(--sincro-blue)]">Kura AI</span>
+                    </h1>
+                    <p className="text-xl md:text-2xl text-[var(--taupe)] font-light max-w-3xl mx-auto mb-12 leading-relaxed">
+                        Elevando la gestión médica hacia una experiencia de serenidad y rentabilidad sincronizada.
+                    </p>
+                    <div className="flex flex-col sm:flex-row gap-6 justify-center items-center">
+                        <a 
+                            className="cta-button bg-[var(--sincro-blue)] text-white text-lg font-medium hover:scale-105 shadow-2xl shadow-blue-500/30 text-center"
+                            href="#registro"
+                            onClick={(e) => handleCTAClick(e, "hero", "Hero")} // Passed "Hero" as seccion
+                            aria-label="Solicitar Prueba Gratuita de Kura AI"
+                        >
+                            Solicitar Prueba Gratuita
+                        </a>
+                        <a 
+                            className="text-[var(--taupe)] font-semibold flex items-center gap-2 hover:translate-x-1 transition-transform" 
+                            href="#ia-humana"
+                            onClick={(e) => {
+                                e.preventDefault();
+                                handleScroll("#ia-humana");
+                            }}
+                            aria-label="Conocer más sobre la IA Humana de SincroHealth"
+                        >
+                            Conoce nuestra IA Humana <span className="material-symbols-outlined">arrow_forward</span>
+                        </a>
+                    </div>
+                </div> {/* End of new glassmorphism card */}
             </div>
         </section>
 
@@ -221,11 +228,17 @@ const LandingPage: React.FC = () => {
           </Suspense>
         </section>
 
-        <section id="registro" className="py-32 px-6">
-            <div className="max-w-7xl mx-auto">
+        <section id="registro" className="relative min-h-screen flex items-center py-20 px-6">
+            <img
+              src="https://ddnnmcfbgqnhcuozurio.supabase.co/storage/v1/object/public/sincrohealth/baner%20/%20fondos%20/Fondo%20de%20Dashboard.webp"
+              alt="Fondo Dashboard SincroHealth"
+              className="absolute inset-0 w-full h-full object-cover -z-20 opacity-100"
+            />
+            
+            <div className="max-w-7xl mx-auto relative z-10">
                 <div className="text-center mb-16">
-                    <h2 className="text-4xl md:text-5xl font-light text-slate-900 mb-6 tracking-tight">Recupere la rentabilidad y el control de su clínica hoy</h2>
-                    <p className="text-[var(--taupe)] font-light max-w-3xl mx-auto text-lg leading-relaxed">Sincronice sus operaciones y elimine la carga administrativa de forma inmediata. Obtenga un diagnóstico personalizado de su flujo de trabajo.</p>
+                    <h2 className="text-4xl md:text-5xl font-light text-white mb-6 tracking-tight">Recupere la rentabilidad y el control de su clínica hoy</h2>
+                    <p className="text-white/90 font-light max-w-3xl mx-auto text-lg leading-relaxed">Sincronice sus operaciones y elimine la carga administrativa de forma inmediata. Obtenga un diagnóstico personalizado de su flujo de trabajo.</p>
                 </div>
                 <div className="grid lg:grid-cols-12 gap-12 items-start">
                     <div className="lg:col-span-5 space-y-6 pt-4">
@@ -238,16 +251,16 @@ const LandingPage: React.FC = () => {
                                 </div>
                             </div>
                         ))}
-                        <div className="mt-8 p-6 rounded-[40px] border border-blue-100 bg-blue-50/30">
-                            <p className="text-[var(--taupe)] text-sm italic leading-relaxed">"La integración con SincroHealth nos permitió recuperar el enfoque clínico en menos de una semana. La carga administrativa simplemente desapareció."</p>
+                        <div className="mt-8 p-6 rounded-[40px] border border-blue-100 bg-black/60 backdrop-blur-sm">
+                            <p className="text-white text-sm italic leading-relaxed">"La integración con SincroHealth nos permitió recuperar el enfoque clínico en menos de una semana. La carga administrativa simplemente desapareció."</p>
                             <div className="mt-4 flex items-center gap-3">
                                 <div className="w-8 h-8 rounded-full bg-slate-200"></div>
-                                <span className="text-xs font-bold text-slate-700">Dr. M. Arrieta, Director Médico</span>
+                                <span className="text-xs font-bold text-white">Dr. M. Arrieta, Director Médico</span>
                             </div>
                         </div>
                     </div>
                     <div className="lg:col-span-7">
-                        <div className="organic-card p-10 md:p-14 bg-white shadow-2xl border-t-8 border-[var(--sincro-blue)]/10">
+                        <div className="organic-card p-10 md:p-14 bg-white/90 backdrop-blur-sm p-8 rounded-3xl shadow-xl">
                           <Suspense fallback={<div>Cargando...</div>}>
                             <ContactForm />
                           </Suspense>

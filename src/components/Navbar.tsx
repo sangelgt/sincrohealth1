@@ -54,13 +54,13 @@ const Navbar = () => {
       >
         <div className="flex lg:flex-1">
           <Link to="/" className="-m-1.5 p-1.5">
-            <span className="sr-only">SincroHealth AI</span>
+            <span className="sr-only">Kura AI</span>
             <img
               width={32}
               height={32}
               className="h-8 w-auto"
               src="https://ddnnmcfbgqnhcuozurio.supabase.co/storage/v1/object/public/sincrohealth/logos/isotipo.webp"
-              alt="SincroHealth AI Logo"
+              alt="Kura AI Logo"
             />
           </Link>
         </div>
@@ -107,13 +107,13 @@ const Navbar = () => {
         <Dialog.Panel className="fixed inset-y-0 right-0 z-50 w-full overflow-y-auto bg-white px-6 py-6 sm:max-w-sm sm:ring-1 sm:ring-gray-900/10">
           <div className="flex items-center justify-between">
             <Link to="/" className="-m-1.5 p-1.5">
-              <span className="sr-only">SincroHealth AI</span>
+              <span className="sr-only">Kura AI</span>
               <img
                 width={32}
                 height={32}
                 className="h-8 w-auto"
                 src="https://ddnnmcfbgqnhcuozurio.supabase.co/storage/v1/object/public/sincrohealth/logos/isotipo.webp"
-                alt="SincroHealth AI Logo"
+                alt="Kura AI Logo"
               />
             </Link>
             <button

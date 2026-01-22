@@ -22,12 +22,12 @@ const Terms: React.FC = () => {
             {
               icon: 'verified',
               title: "Aceptación de Términos",
-              content: "Al acceder y utilizar la plataforma SincroHealth AI, usted acepta quedar vinculado por estos Términos y Condiciones de Servicio. Si no está de acuerdo con alguna parte de estos términos, no podrá utilizar nuestros servicios. Este acuerdo constituye el entendimiento completo entre el profesional o entidad clínica ('Usuario') y SincroHealth AI."
+              content: "Al acceder y utilizar la plataforma Kura AI, usted acepta quedar vinculado por estos Términos y Condiciones de Servicio. Si no está de acuerdo con alguna parte de estos términos, no podrá utilizar nuestros servicios. Este acuerdo constituye el entendimiento completo entre el profesional o entidad clínica ('Usuario') y Kura AI."
             },
             {
               icon: 'psychology',
               title: "Uso del Software y Licencia",
-              content: "SincroHealth AI otorga al Usuario una licencia limitada, no exclusiva e intransferible para acceder y utilizar la plataforma exclusivamente para la gestión de su práctica clínica profesional.",
+              content: "Kura AI otorga al Usuario una licencia limitada, no exclusiva e intransferible para acceder y utilizar la plataforma exclusivamente para la gestión de su práctica clínica profesional.",
               list: [
                 "El Usuario es responsable de mantener la confidencialidad de sus credenciales.",
                 "Queda prohibido el uso de la plataforma para fines ilícitos o no autorizados.",
@@ -37,7 +37,7 @@ const Terms: React.FC = () => {
             {
               icon: 'copyright',
               title: "Propiedad Intelectual",
-              content: "Todos los derechos de propiedad intelectual sobre el software, algoritmos, interfaces y contenido original de SincroHealth AI son propiedad exclusiva de la compañía. El Usuario conserva los derechos sobre los datos de pacientes."
+              content: "Todos los derechos de propiedad intelectual sobre el software, algoritmos, interfaces y contenido original de Kura AI son propiedad exclusiva de la compañía. El Usuario conserva los derechos sobre los datos de pacientes."
             }
           ].map((item, idx) => (
             <motion.section 

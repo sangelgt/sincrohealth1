@@ -16,8 +16,8 @@ const Footer: React.FC = () => {
         <div className="flex items-center">
           <div className="h-24 md:h-32 w-full max-w-[320px] md:max-w-[600px] overflow-hidden flex items-center justify-center rounded-2xl">
             <img 
-              src="https://ddnnmcfbgqnhcuozurio.supabase.co/storage/v1/object/public/sincrohealth/logos/imagotipo.webp" 
-              alt="SincroHealth AI Logo Completo" 
+              src="https://ddnnmcfbgqnhcuozurio.supabase.co/storage/v1/object/public/sincrohealth/logos/imagotipo_vertical.webp" 
+              alt="Kura AI Logo Completo" 
               className="w-full h-full object-cover object-center opacity-90 hover:opacity-100 transition-opacity duration-500"
             />
           </div>
@@ -30,7 +30,7 @@ const Footer: React.FC = () => {
         </div>
         
         <p className="text-xs md:text-sm font-normal tracking-normal text-taupe">
-          © 2026 SincroHealth AI. Organic Premium Edition.
+          © 2026 Kura AI. Organic Premium Edition.
         </p>
       </div>
     </footer>

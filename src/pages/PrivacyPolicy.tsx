@@ -21,7 +21,7 @@ const PrivacyPolicy: React.FC = () => {
           {[
             {
               title: "Recopilación de Datos",
-              content: `En SincroHealth AI, la privacidad y seguridad de la información médica es nuestra prioridad absoluta. Recopilamos información necesaria para proporcionar una gestión clínica eficiente, incluyendo:`,
+              content: `En Kura AI, la privacidad y seguridad de la información médica es nuestra prioridad absoluta. Recopilamos información necesaria para proporcionar una gestión clínica eficiente, incluyendo:`,
               list: [
                 "Datos de Identificación: Nombre completo, especialidad médica y datos de contacto corporativo.",
                 "Información de Pacientes: Datos procesados a través de nuestra IA para triaje y agenda (siempre bajo los más estrictos estándares de cifrado).",

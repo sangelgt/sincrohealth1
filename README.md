@@ -2,9 +2,9 @@
 <img width="1200" height="475" alt="GHBanner" src="https://github.com/user-attachments/assets/0aa67016-6eaf-458a-adb2-6e31a0763ed6" />
 </div>
 
-# SincroHealth AI: Manual de Mantenimiento Técnico
+# Kura AI: Manual de Mantenimiento Técnico
 
-Este repositorio contiene el código fuente y la documentación técnica de la landing page de SincroHealth AI, una solución de gestión clínica de alto rendimiento diseñada bajo el concepto "Organic Premium".
+Este repositorio contiene el código fuente y la documentación técnica de la landing page de Kura AI, una solución de gestión clínica de alto rendimiento diseñada bajo el concepto "Organic Premium".
 
 ---
 
