@@ -224,7 +224,7 @@ const LandingPage: React.FC = () => {
             
         <section id="planes" className="py-32 px-6">
           <Suspense fallback={<div>Cargando...</div>}>
-            <PricingSection handleCTAClick={handleCTAClick} />
+            <PricingSection />
           </Suspense>
         </section>
 
