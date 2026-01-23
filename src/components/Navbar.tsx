@@ -1,43 +1,53 @@
 import { useState, useEffect } from "react";
-import { Link, useLocation } from "react-router-dom";
+import { Link, useLocation, useNavigate } from "react-router-dom";
 import { Dialog } from "@headlessui/react";
 import { Bars3Icon, XMarkIcon } from "@heroicons/react/24/outline";
 
 // Definición de tipos para las rutas de navegación
 interface NavRoute {
   name: string;
-  href: string; 
-  targetId: string; 
+  href: string;
+  targetId: string;
 }
 
-// Rutas de navegación principales corregidas
+// Rutas de navegación principales con rutas absolutas
 const navRoutes: NavRoute[] = [
-  { name: "INICIO", href: "#hero", targetId: "hero" },
-  { name: "EL DESAFÍO", href: "#caos", targetId: "caos" },
-  { name: "IA HUMANA", href: "#ia-humana", targetId: "ia-humana" },
-  { name: "MÉTRICAS", href: "#metricas", targetId: "metricas" },
-  { name: "PLANES", href: "#planes", targetId: "planes" },
+  { name: "INICIO", href: "/#hero", targetId: "hero" },
+  { name: "EL DESAFÍO", href: "/#caos", targetId: "caos" },
+  { name: "IA HUMANA", href: "/#ia-humana", targetId: "ia-humana" },
+  { name: "MÉTRICAS", href: "/#metricas", targetId: "metricas" },
+  { name: "PLANES", href: "/#planes", targetId: "planes" },
 ];
 
 const Navbar = () => {
   const [mobileMenuOpen, setMobileMenuOpen] = useState(false);
   const location = useLocation();
+  const navigate = useNavigate(); // Initialize useNavigate
 
   useEffect(() => {
     setMobileMenuOpen(false);
   }, [location.pathname]);
 
-  const handleNavClick = (
-    e: React.MouseEvent<HTMLAnchorElement>,
+  const handleNavClick = async ( // Make it async
+    e: React.MouseEvent<HTMLAnchorElement | HTMLButtonElement>, // Allow button events
     targetId: string
   ) => {
     e.preventDefault();
-    setMobileMenuOpen(false); 
+    setMobileMenuOpen(false);
 
+    if (location.pathname !== "/") {
+      // If not on the home page, navigate to home first
+      await navigate("/");
+      // Add a small delay to ensure navigation completes before scrolling
+      await new Promise(resolve => setTimeout(resolve, 100));
+    }
+
+    // After navigating to home (or if already on home), then scroll
     const element = document.getElementById(targetId);
     if (element) {
       element.scrollIntoView({ behavior: 'smooth' });
-      window.history.pushState(null, '', `/#/${targetId}`);
+      // Update the URL hash without reloading, respecting HashRouter
+      window.history.pushState(null, '', `/#${targetId}`);
     }
   };
 
@@ -48,7 +58,8 @@ const Navbar = () => {
         aria-label="Global"
       >
         <div className="flex lg:flex-1">
-          <Link to="/" onClick={(e) => handleNavClick(e, 'hero')} className="-m-1.5 p-1.5">
+          {/* Logo siempre apunta a la raíz y scroll a hero */}
+          <Link to="/#hero" onClick={(e) => handleNavClick(e, 'hero')} className="-m-1.5 p-1.5">
             <span className="sr-only">Kura AI</span>
             <img
               width={32}
@@ -72,24 +83,25 @@ const Navbar = () => {
         </div>
         <div className="hidden lg:flex lg:gap-x-12">
           {navRoutes.map((route) => (
-            <a
+            <Link
               key={route.name}
-              href={route.href}
+              to={route.href} // Usa la ruta absoluta directamente
               onClick={(e) => handleNavClick(e, route.targetId)}
               className="text-sm font-semibold leading-6 text-gray-900"
             >
               {route.name}
-            </a>
+            </Link>
           ))}
         </div>
         <div className="hidden lg:flex lg:flex-1 lg:justify-end">
-          <a
-            href="#registro"
+          {/* Botón CTA siempre apunta a la raíz y scroll a registro */}
+          <Link
+            to="/#registro" // Usa la ruta absoluta directamente
             onClick={(e) => handleNavClick(e, "registro")}
             className="rounded-full bg-[#137fec] px-4 py-2 text-sm font-semibold text-white shadow-sm hover:bg-blue-600 focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-[#137fec]"
           >
             Solicitar Prueba Gratuita
-          </a>
+          </Link>
         </div>
       </nav>
       {/* Mobile Menu */}
@@ -102,7 +114,8 @@ const Navbar = () => {
         <div className="fixed inset-0 z-50" />
         <Dialog.Panel className="fixed inset-y-0 right-0 z-50 w-full overflow-y-auto bg-white px-6 py-6 sm:max-w-sm sm:ring-1 sm:ring-gray-900/10">
           <div className="flex items-center justify-between">
-            <Link to="/" onClick={(e) => handleNavClick(e, 'hero')} className="-m-1.5 p-1.5">
+            {/* Mobile Menu Logo Link */}
+            <Link to="/#hero" onClick={(e) => handleNavClick(e, 'hero')} className="-m-1.5 p-1.5">
               <span className="sr-only">Kura AI</span>
               <img
                 width={32}
@@ -126,24 +139,25 @@ const Navbar = () => {
             <div className="-my-6 divide-y divide-gray-500/10">
               <div className="space-y-2 py-6">
                 {navRoutes.map((route) => (
-                  <a
+                  <Link
                     key={route.name}
-                    href={route.href}
+                    to={route.href} // Usa la ruta absoluta directamente
                     onClick={(e) => handleNavClick(e, route.targetId)}
                     className="-mx-3 block rounded-lg px-3 py-2 text-base font-semibold leading-7 text-gray-900 hover:bg-gray-50"
                   >
                     {route.name}
-                  </a>
+                  </Link>
                 ))}
               </div>
               <div className="py-6">
-                <a
-                  href="#registro"
+                {/* Mobile Menu Solicitar Prueba Gratuita Button */}
+                <Link
+                  to="/#registro" // Usa la ruta absoluta directamente
                   onClick={(e) => handleNavClick(e, "registro")}
                   className="-mx-3 block rounded-lg px-3 py-2.5 text-base font-semibold leading-7 text-gray-900 hover:bg-gray-50"
                 >
                   Solicitar Prueba Gratuita
-                </a>
+                </Link>
               </div>
             </div>
           </div>

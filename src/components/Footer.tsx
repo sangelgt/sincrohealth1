@@ -1,4 +1,5 @@
 import React from 'react';
+import { Link } from 'react-router-dom';
 
 const Footer: React.FC = () => {
   const handleNavClick = (e: React.MouseEvent<HTMLAnchorElement>, targetId: string) => {
@@ -24,8 +25,8 @@ const Footer: React.FC = () => {
         </div>
         
         <div className="flex flex-wrap justify-center gap-6 md:gap-10">
-          <a href="/politica-de-privacidad" target="_blank" rel="noopener noreferrer" className="text-sm uppercase tracking-wider font-medium text-slate-600 hover:text-sincro-blue transition-colors" aria-label="Leer nuestra política de privacidad en una nueva pestaña">Privacidad</a>
-          <a href="/terminos-y-condiciones" target="_blank" rel="noopener noreferrer" className="text-sm uppercase tracking-wider font-medium text-slate-600 hover:text-sincro-blue transition-colors" aria-label="Leer nuestros términos y condiciones en una nueva pestaña">Términos</a>
+          <Link to="/privacidad" className="text-sm uppercase tracking-wider font-medium text-slate-600 hover:text-sincro-blue transition-colors" aria-label="Leer nuestra política de privacidad">Privacidad</Link>
+          <Link to="/terminos" className="text-sm uppercase tracking-wider font-medium text-slate-600 hover:text-sincro-blue transition-colors" aria-label="Leer nuestros términos y condiciones">Términos</Link>
           <a href="#registro" onClick={(e) => handleNavClick(e, 'registro')} className="text-sm uppercase tracking-wider font-medium text-slate-600 hover:text-sincro-blue transition-colors" aria-label="Ir a la sección de contacto">Contacto</a>
         </div>
         
