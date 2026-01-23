@@ -101,7 +101,7 @@ const ContactForm: React.FC = () => {
     };
 
     return (
-        <form className="space-y-8 bg-white/90 backdrop-blur-md" onSubmit={handleSubmit}>
+        <form className="space-y-8" onSubmit={handleSubmit}>
             <div className="grid md:grid-cols-2 gap-8">
                 <div className="space-y-2">
                     <label className="text-[10px] uppercase tracking-widest text-[var(--taupe)] font-bold ml-4">Nombre Completo</label>
@@ -151,7 +151,7 @@ const ContactForm: React.FC = () => {
                 <div className="space-y-2">
                     <label className="text-[10px] uppercase tracking-widest text-[var(--taupe)] font-bold ml-4">Teléfono</label>
                     <input
-                        className="w-full bg-[var(--cream)] border-none rounded-full px-8 py-4 focus:ring-2 focus:ring-[#0d5fb4]/20 transition-all placeholder:text-[var(--taupe)]/40 text-slate-700"
+                        className="w-full bg-[var(--cream)] border-none rounded-full px-8 py-4 focus:ring-2 focus->ring-[#0d5fb4]/20 transition-all placeholder:text-[var(--taupe)]/40 text-slate-700"
                         placeholder="+34 600 000 000"
                         required
                         type="tel"
