@@ -143,9 +143,11 @@ const PricingSection: React.FC = () => {
                 <motion.div 
                     layout
                     key={index} 
-                    className={`p-8 flex flex-col relative overflow-hidden h-full rounded-3xl shadow-xl backdrop-blur-md transition-all duration-300 ${plan.isRecommended ? 'border-2 border-[#0d5fb4]/30 bg-white/70 scale-105' : 'border border-slate-200 bg-white/50'}`}
+                    className={`p-8 flex flex-col relative overflow-hidden h-full rounded-3xl backdrop-blur-md ${plan.isRecommended ? 'border-2 border-[#0d5fb4]/30 bg-white/70 shadow-xl' : 'border border-slate-200 bg-white/50 shadow'}`}
                     initial={{ opacity: 0, y: 50 }}
                     whileInView={{ opacity: 1, y: 0 }}
+                    whileHover={{ y: -5, scale: 1.02, boxShadow: '0 20px 25px -5px rgba(0, 0, 0, 0.1), 0 10px 10px -5px rgba(0, 0, 0, 0.04)' }}
+                    whileTap={{ scale: 0.98 }}
                     transition={{ duration: 0.5, delay: index * 0.1 }}
                     viewport={{ once: true }}
                 >
