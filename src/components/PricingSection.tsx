@@ -71,7 +71,7 @@ const FeatureItem: React.FC<FeatureItemProps> = ({ title, description }) => {
     const [isHovered, setIsHovered] = useState(false);
 
     return (
-        <motion.li 
+        <motion.li
             layout
             onHoverStart={() => setIsHovered(true)}
             onHoverEnd={() => setIsHovered(false)}
@@ -140,16 +140,14 @@ const PricingSection: React.FC = () => {
         </div>
         <div className="grid grid-cols-1 lg:grid-cols-3 gap-8 items-stretch">
             {plans.map((plan, index) => (
-                <motion.div 
-                    layout
-                    key={index} 
+                <motion.div
+                    key={index}
                     className={`p-8 flex flex-col relative overflow-hidden h-full rounded-3xl backdrop-blur-md ${plan.isRecommended ? 'border-2 border-[#0d5fb4]/30 bg-white/70 shadow-xl' : 'border border-slate-200 bg-white/50 shadow'}`}
-                    initial={{ opacity: 0, y: 50 }}
+                    initial={{ opacity: 0, y: 20 }}
                     whileInView={{ opacity: 1, y: 0 }}
-                    whileHover={{ y: -5, scale: 1.02, boxShadow: '0 20px 25px -5px rgba(0, 0, 0, 0.1), 0 10px 10px -5px rgba(0, 0, 0, 0.04)' }}
-                    whileTap={{ scale: 0.98 }}
-                    transition={{ duration: 0.5, delay: index * 0.1 }}
                     viewport={{ once: true }}
+                    whileHover={{ y: -10, transition: { duration: 0.3 } }}
+                    transition={{ duration: 0.5 }}
                 >
                     {plan.isRecommended && (
                         <div className="absolute top-0 right-0 bg-[#0d5fb4] text-white text-[10px] font-bold uppercase tracking-widest px-6 py-2 rounded-bl-3xl z-10">Popular</div>
@@ -191,7 +189,7 @@ const PricingSection: React.FC = () => {
                     <a 
                         href="/#/registro"
                         onClick={(e) => handleCTAClick(e, plan.id)}
-                        className={`w-full mt-auto py-3 px-6 rounded-full font-semibold text-center transition-all duration-300 text-sm ${
+                        className={`w-full mt-auto py-3 px-6 rounded-full font-semibold text-center text-sm ${
                         plan.isRecommended 
                         ? 'bg-[#0d5fb4] text-white hover:bg-[#1a73d9] shadow-lg shadow-blue-500/20'
                         : 'border border-slate-300 text-slate-700 hover:bg-slate-100 hover:shadow-md'
