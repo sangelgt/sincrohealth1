@@ -75,8 +75,7 @@ const LandingPage: React.FC = () => {
                         Transforme su clínica con <span className="font-semibold text-[#0d5fb4]">Kura AI</span>
                     </h1>
                     <p className="text-xl md:text-2xl text-[var(--taupe)] font-light max-w-3xl mx-auto mb-12 leading-relaxed">
-                        Elevando la gestión médica hacia una experiencia de serenidad y rentabilidad sincronizada.
-                    </p>
+                        Elevando la gestión médica hacia una experiencia de serenidad y rentabilidad sincronizada.\n                    </p>
                     <div className="flex flex-col sm:flex-row gap-6 justify-center items-center">
                         <a href="/#/registro" onClick={(e) => handleScroll(e, 'registro')} className="cta-button bg-[#0d5fb4] text-white text-lg font-medium hover:scale-105 shadow-2xl shadow-blue-500/30 text-center">
                             Solicitar Prueba Gratuita
@@ -146,22 +145,21 @@ const LandingPage: React.FC = () => {
                         <div>
                             <h2 className="text-4xl md:text-5xl font-light mb-8 leading-tight text-[var(--deep-navy)]">Métricas que inspiran <br/><span className="text-[#0d5fb4]">tranquilidad</span></h2>
                             <p className="text-[var(--deep-navy)] mb-12 text-lg font-light">Nuestros resultados no solo son números; son minutos recuperados para lo que realmente importa: la atención al paciente.</p>
-                            <div className="grid grid-cols-2 gap-x-8 gap-y-12">
+                            <div className="grid grid-cols-1 md:grid-cols-2 gap-x-8 gap-y-12"> {/* Changed to grid-cols-1 for small screens, gap-6 instead of px-4 on main container */}
                                 {metrics.map(metric => (
-                                    <div key={metric.label} className="w-full">
+                                    <div key={metric.label} className="w-full h-auto min-h-fit"> {/* Ensure w-full, h-auto, min-h-fit */}
                                         <p className="text-5xl font-light text-[#0d5fb4] mb-2 break-words">{metric.value}</p>
                                         <p className="text-xs text-[var(--deep-navy)] uppercase tracking-widest font-bold break-words">{metric.label}</p>
-                                        <p className="text-[10px] text-[var(--deep-navy)] mt-2 break-words max-w-[150px] whitespace-normal">{metric.sublabel}</p>
+                                        <p className="text-[10px] text-[var(--deep-navy)] mt-2 break-words whitespace-normal">{metric.sublabel}</p> {/* Removed max-w-[150px] */}
                                     </div>
                                 ))}
                             </div>
                         </div>
-                        <div className="overflow-x-hidden">
-                            <div className="w-[85%] max-w-[300px] aspect-[9/19] mx-auto overflow-hidden">
+                        <div className="w-full flex justify-center items-center py-8 overflow-visible"> {/* Modified classes */}
+                            {/* The inner div, which was the wrapper, is now removed as per the new AnimatedPhone structure */}
                                <Suspense fallback={null}>
                                   <AnimatedPhone />
                                </Suspense>
-                            </div>
                         </div>
                     </div>
                 </div>
@@ -196,9 +194,9 @@ const LandingPage: React.FC = () => {
                                 <div>
                                     <h3 className="font-semibold text-slate-800">{benefit.title}</h3>
                                     <p className="text-sm text-[var(--taupe)]">{benefit.description}</p>
+                                    </div>
                                 </div>
-                            </div>
-                        ))}
+                            ))}
                         <div className="mt-8 p-6 rounded-[40px] border border-blue-100 bg-black/60 backdrop-blur-sm">
                             <p className="text-white/80 text-sm italic leading-relaxed">"La integración con Kura nos permitió recuperar el enfoque clínico en menos de una semana. La carga administrativa simplemente desapareció."</p>
                             <div className="mt-4 flex items-center gap-3">
