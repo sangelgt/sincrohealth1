@@ -54,7 +54,7 @@ const Navbar = () => {
               width={32}
               height={32}
               className="h-8 w-auto"
-              src="https://ddnnmcfbgqnhcuozurio.supabase.co/storage/v1/object/public/sincrohealth/logos/isotipo.webp"
+              src="https://ddnnmcfbgqnhcuozurio.supabase.co/storage/v1/object/public/sincrohealth/logos/kuraAIisotipo.png"
               alt="Kura AI Logo"
             />
           </Link>
@@ -107,7 +107,7 @@ const Navbar = () => {
                 width={32}
                 height={32}
                 className="h-8 w-auto"
-                src="https://ddnnmcfbgqnhcuozurio.supabase.co/storage/v1/object/public/sincrohealth/logos/isotipo.webp"
+                src="https://ddnnmcfbgqnhcuozurio.supabase.co/storage/v1/object/public/sincrohealth/logos/kuraAIisotipo.png"
                 alt="Kura AI Logo"
               />
             </Link>
