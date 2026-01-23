@@ -146,8 +146,8 @@ const PricingSection: React.FC = () => {
                     initial={{ opacity: 0, y: 20 }}
                     whileInView={{ opacity: 1, y: 0 }}
                     viewport={{ once: true }}
-                    whileHover={{ y: -10, transition: { duration: 0.3 } }}
-                    transition={{ duration: 0.5 }}
+                    whileHover={{ y: -12, scale: 1.02 }}
+                    transition={{ type: "spring", stiffness: 300, damping: 20 }}
                 >
                     {plan.isRecommended && (
                         <div className="absolute top-0 right-0 bg-[#0d5fb4] text-white text-[10px] font-bold uppercase tracking-widest px-6 py-2 rounded-bl-3xl z-10">Popular</div>
