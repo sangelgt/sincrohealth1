@@ -1,0 +1,30 @@
+Kura AI: Plataforma de Gestión Clínica Inteligente
+
+**Resumen del Producto:**
+Kura AI es una aplicación de software (SaaS) diseñada para profesionales de la salud. Su objetivo principal es optimizar la gestión clínica, reducir la carga administrativa y mejorar la relación médico-paciente mediante una interfaz de usuario "Organic Premium". La plataforma se enfoca en la eficiencia, la serenidad y la tecnología avanzada.
+
+**Servicios Principales:**
+1.  **Natural Agenda:** Optimización de agendas médicas mediante algoritmos predictivos para reducir el ausentismo y maximizar la ocupación.
+2.  **Triaje Empático Digital:** Un sistema de triaje inicial que personaliza la interacción con el paciente desde el primer contacto.
+3.  **Sincronización con WhatsApp:** Integración segura de conversaciones de WhatsApp directamente en el historial clínico electrónico (EHR) del paciente.
+4.  **Captura de Leads:** Formulario de contacto integrado con la base de datos Supabase para la gestión de nuevos prospectos (médicos y clínicas).
+
+**Métricas de Éxito Reportadas:**
+- Reducción del ausentismo de pacientes.
+- Aumento del Retorno de Inversión (ROI) para las clínicas.
+- Disminución del tiempo dedicado a tareas administrativas en un 40%.
+- Aumento de la conversión de pacientes en un 30%.
+
+**Arquitectura y Tecnología:**
+- Frontend: React 19, TypeScript
+- Estilos: Tailwind CSS
+- Animaciones: Framer Motion
+- Backend y Base de Datos: Supabase
+
+**Rutas de Navegación Disponibles:**
+- / (LandingPage): Página principal que describe el producto y sus beneficios. Contiene las secciones: Hero, Caos, Solución, Métricas.
+- /terminos (Terms): Página de Términos y Condiciones del servicio.
+- /privacidad (PrivacyPolicy): Página de Política de Privacidad y manejo de datos.
+
+**Palabras Clave:**
+Software de gestión clínica, optimización de agenda médica, IA para salud, reducción de ausentismo, SaaS para médicos, gestión de pacientes, triaje digital, historial clínico electrónico.
