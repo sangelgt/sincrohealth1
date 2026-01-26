@@ -101,107 +101,111 @@ const ContactForm: React.FC = () => {
     };
 
     return (
-        <form className="space-y-8" onSubmit={handleSubmit}>
-            <div className="grid md:grid-cols-2 gap-8">
-                <div className="space-y-2">
-                    <label className="text-[10px] uppercase tracking-widest text-[var(--taupe)] font-bold ml-4">Nombre Completo</label>
-                    <input
-                        className="w-full bg-[var(--cream)] border-none rounded-full px-8 py-4 focus:ring-2 focus:ring-[#0d5fb4]/20 transition-all placeholder:text-[var(--taupe)]/40 text-slate-700"
-                        placeholder="Ej: Dra. Elena Castillo"
-                        required
-                        type="text"
-                        name="fullName"
-                        value={formData.fullName}
-                        onChange={handleChange}
-                    />
+        <div>
+            <p className="text-center text-[var(--taupe)] italic text-sm mb-6 pb-4 border-b border-slate-200">
+                Solo para médicos independientes, consultorios y clínicas que atienden al menos 100 pacientes al mes.
+            </p>
+            <form className="space-y-8" onSubmit={handleSubmit}>
+                <div className="grid md:grid-cols-2 gap-8">
+                    <div className="space-y-2">
+                        <label className="text-[10px] uppercase tracking-widest text-[var(--taupe)] font-bold ml-4">Nombre Completo</label>
+                        <input
+                            className="w-full bg-[var(--cream)] border-none rounded-full px-8 py-4 focus:ring-2 focus:ring-[#0d5fb4]/20 transition-all placeholder:text-[var(--taupe)]/40 text-slate-700"
+                            placeholder="Ej: Dra. Elena Castillo"
+                            required
+                            type="text"
+                            name="fullName"
+                            value={formData.fullName}
+                            onChange={handleChange}
+                        />
+                    </div>
+                    <div className="space-y-2">
+                        <label className="text-[10px] uppercase tracking-widest text-[var(--taupe)] font-bold ml-4">Especialidad</label>
+                        <div className="relative">
+                            <select
+                                className="w-full bg-[var(--cream)] border-none rounded-full px-8 py-4 focus:ring-2 focus:ring-[#0d5fb4]/20 transition-all text-slate-600 appearance-none bg-none cursor-pointer"
+                                name="specialty"
+                                value={formData.specialty}
+                                onChange={handleChange}
+                                required
+                                aria-label="Especialidad"
+                            >
+                                <option value="" disabled>Seleccione una especialidad...</option>
+                                {specialties.map(spec => <option key={spec} value={spec}>{spec}</option>)}
+                            </select>
+                            <div className="absolute inset-y-0 right-6 flex items-center pointer-events-none text-[var(--taupe)]">
+                                <span className="material-symbols-outlined text-xl">expand_more</span>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div className="grid md:grid-cols-2 gap-8">
+                    <div className="space-y-2">
+                        <label className="text-[10px] uppercase tracking-widest text-[var(--taupe)] font-bold ml-4">Correo Corporativo</label>
+                        <input
+                            className="w-full bg-[var(--cream)] border-none rounded-full px-8 py-4 focus:ring-2 focus:ring-[#0d5fb4]/20 transition-all placeholder:text-[var(--taupe)]/40 text-slate-700"
+                            placeholder="contacto@tuclinica.com"
+                            required
+                            type="email"
+                            name="email"
+                            value={formData.email}
+                            onChange={handleChange}
+                        />
+                    </div>
+                    <div className="space-y-2">
+                        <label className="text-[10px] uppercase tracking-widest text-[var(--taupe)] font-bold ml-4">Teléfono</label>
+                        <input
+                            className="w-full bg-[var(--cream)] border-none rounded-full px-8 py-4 focus:ring-2 focus:ring-[#0d5fb4]/20 transition-all placeholder:text-[var(--taupe)]/40 text-slate-700"
+                            placeholder="+34 600 000 000"
+                            required
+                            type="tel"
+                            name="phone"
+                            value={formData.phone}
+                            onChange={handleChange}
+                        />
+                    </div>
                 </div>
                 <div className="space-y-2">
-                    <label className="text-[10px] uppercase tracking-widest text-[var(--taupe)] font-bold ml-4">Especialidad</label>
+                    <label className="text-[10px] uppercase tracking-widest text-[var(--taupe)] font-bold ml-4">Pacientes Mensuales (Volumen Estimado)</label>
                     <div className="relative">
                         <select
                             className="w-full bg-[var(--cream)] border-none rounded-full px-8 py-4 focus:ring-2 focus:ring-[#0d5fb4]/20 transition-all text-slate-600 appearance-none bg-none cursor-pointer"
-                            name="specialty"
-                            value={formData.specialty}
+                            name="monthlyPatients"
+                            value={formData.monthlyPatients}
                             onChange={handleChange}
-                            required
-                            aria-label="Especialidad"
+                            aria-label="Cantidad de pacientes"
                         >
-                            <option value="" disabled>Seleccione una especialidad...</option>
-                            {specialties.map(spec => <option key={spec} value={spec}>{spec}</option>)}
+                            <option value="">Seleccione un rango...</option>
+                            <option value="1-100">1 - 100 pacientes</option>
+                            <option value="101-500">101 - 500 pacientes</option>
+                            <option value="501-1000">501 - 1,000 pacientes</option>
+                            <option value="1000+">Más de 1,000 pacientes</option>
                         </select>
                         <div className="absolute inset-y-0 right-6 flex items-center pointer-events-none text-[var(--taupe)]">
                             <span className="material-symbols-outlined text-xl">expand_more</span>
                         </div>
                     </div>
                 </div>
-            </div>
-            <div className="grid md:grid-cols-2 gap-8">
-                <div className="space-y-2">
-                    <label className="text-[10px] uppercase tracking-widest text-[var(--taupe)] font-bold ml-4">Correo Corporativo</label>
-                    <input
-                        className="w-full bg-[var(--cream)] border-none rounded-full px-8 py-4 focus:ring-2 focus:ring-[#0d5fb4]/20 transition-all placeholder:text-[var(--taupe)]/40 text-slate-700"
-                        placeholder="contacto@tuclinica.com"
-                        required
-                        type="email"
-                        name="email"
-                        value={formData.email}
-                        onChange={handleChange}
-                    />
-                </div>
-                <div className="space-y-2">
-                    <label className="text-[10px] uppercase tracking-widest text-[var(--taupe)] font-bold ml-4">Teléfono</label>
-                    <input
-                        className="w-full bg-[var(--cream)] border-none rounded-full px-8 py-4 focus:ring-2 focus->ring-[#0d5fb4]/20 transition-all placeholder:text-[var(--taupe)]/40 text-slate-700"
-                        placeholder="+34 600 000 000"
-                        required
-                        type="tel"
-                        name="phone"
-                        value={formData.phone}
-                        onChange={handleChange}
-                    />
-                </div>
-            </div>
-            <div className="space-y-2">
-                <label className="text-[10px] uppercase tracking-widest text-[var(--taupe)] font-bold ml-4">Pacientes Mensuales (Volumen Estimado)</label>
-                <div className="relative">
-                    <select
-                        className="w-full bg-[var(--cream)] border-none rounded-full px-8 py-4 focus:ring-2 focus:ring-[#0d5fb4]/20 transition-all text-slate-600 appearance-none bg-none cursor-pointer"
-                        name="monthlyPatients"
-                        value={formData.monthlyPatients}
-                        onChange={handleChange}
-                        aria-label="Cantidad de pacientes"
+                <div className="pt-4">
+                    <button
+                        className="w-full cta-button bg-[#0d5fb4] text-white text-xl font-semibold shadow-xl shadow-blue-500/20 hover:bg-blue-600 hover:shadow-blue-500/40 transform hover:-translate-y-1"
+                        type="submit"
+                        disabled={submissionStatus === 'success'}
                     >
-                        <option value="">Seleccione un rango...</option>
-                        <option value="1-100">1 - 100 pacientes</option>
-                        <option value="101-500">101 - 500 pacientes</option>
-                        <option value="501-1000">501 - 1,000 pacientes</option>
-                        <option value="1000+">Más de 1,000 pacientes</option>
-                    </select>
-                    <div className="absolute inset-y-0 right-6 flex items-center pointer-events-none text-[var(--taupe)]">
-                        <span className="material-symbols-outlined text-xl">expand_more</span>
-                    </div>
+                        Solicitar Prueba Gratuita
+                    </button>
+                    {submissionStatus === 'success' && (
+                        <p className="text-center mt-4 text-green-600 font-semibold">{submissionMessage}</p>
+                    )}
+                    {submissionStatus === 'error' && (
+                        <p className="text-center mt-4 text-red-600 font-semibold">{submissionMessage}</p>
+                    )}
+                    <p className="text-center text-[var(--taupe)] text-xs mt-6">
+                        Confidencialidad garantizada · 30 días de prueba sin compromiso. <br /> Sin tarjeta de crédito, cancelable en cualquier momento.
+                    </p>
                 </div>
-            </div>
-            <div className="pt-4">
-                <button
-                    className="w-full cta-button bg-[#0d5fb4] text-white text-xl font-semibold shadow-xl shadow-blue-500/20 hover:bg-blue-600 hover:shadow-blue-500/40 transform hover:-translate-y-1"
-                    type="submit"
-                    disabled={submissionStatus === 'success'}
-                >
-                    Solicitar Prueba Gratuita
-                </button>
-                {submissionStatus === 'success' && (
-                    <p className="text-center mt-4 text-green-600 font-semibold">{submissionMessage}</p>
-                )}
-                {submissionStatus === 'error' && (
-                    <p className="text-center mt-4 text-red-600 font-semibold">{submissionMessage}</p>
-                )}
-                <p className="text-center text-[var(--taupe)] text-[10px] uppercase tracking-widest font-bold mt-6 flex items-center justify-center gap-2">
-                    <span className="material-symbols-outlined text-sm">verified_user</span>
-                    Confidencialidad garantizada · 30 días de prueba sin compromiso
-                </p>
-            </div>
-        </form>
+            </form>
+        </div>
     );
 };
 

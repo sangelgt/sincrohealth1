@@ -1,6 +1,7 @@
 import React, { useEffect, Suspense, lazy } from "react";
 import { useLocation } from "react-router-dom";
 import { motion, LazyMotion, domAnimation } from "framer-motion";
+import Typewriter from "typewriter-effect";
 import { supabase } from "../lib/supabase"; // Import supabase
 
 const ContactForm = lazy(() => import("../components/ContactForm"));
@@ -8,15 +9,15 @@ const AnimatedPhone = lazy(() => import("../components/AnimatedPhone"));
 const PricingSection = lazy(() => import("../components/PricingSection"));
 
 const chaosCards = [
-  { icon: "air", title: "Recuperar el aliento", description: "Diga adiós al Burnout. Eliminamos el ruido administrativo para que su equipo vuelva a conectar con el propósito de sanar." },
-  { icon: "bubble_chart", title: "Sincronización fluida", description: "Adiós al Info Chaos. Un flujo de datos armónico donde cada mensaje y cita encuentra su lugar sin esfuerzo humano." },
-  { icon: "expand", title: "Crezca sin esfuerzo", description: "Escalabilidad orgánica. Nuestra arquitectura se expande silenciosamente a medida que su clínica conquista nuevos horizontes." },
-  { icon: "water_drop", title: "Asegure cada gota", description: "Detenga la Fuga de Ingresos. Optimizamos cada recurso con la delicadeza de un relojero y la visión de un estratega." }
+  { icon: "air", title: "Menos chats, más pacientes.", description: "Kura responde y clasifica mensajes por ti para que no vivas pegado al WhatsApp." },
+  { icon: "bubble_chart", title: "Agenda unificada.", description: "Llamadas, WhatsApp y web en un solo calendario, sin solapamientos ni citas perdidas." },
+  { icon: "expand", title: "Escala sin límites.", description: "Crece de 1 a 10 consultorios sin necesidad de contratar más personal administrativo." },
+  { icon: "water_drop", title: "Agenda siempre llena.", description: "Detecta huecos en la agenda y los rellena automáticamente con recordatorios y reactivación de pacientes." }
 ];
 const solutions = [
-  { id: "01", title: "Booking Booster", description: "Natural Agenda: Un ecosistema de citas que respira. Algoritmos predictivos que entienden el contexto vital del paciente para una programación fluida y sin solapamientos." },
-  { id: "02", title: "Triaje Empático", description: "Priority & Sensitivity: Una acogida digital que prioriza la urgencia clínica sin perder la calidez humana, identificando matices emocionales en cada consulta inicial." },
-  { id: "03", title: "Bóveda WhatsApp-to-EHR", description: "Invisible Security: Conversaciones cifradas que se integran automáticamente en el historial clínico, garantizando que ninguna palabra del paciente se pierda en el vacío." }
+  { id: "01", title: "Booking Booster – Agenda automática por WhatsApp y web.", description: "El paciente escribe, Kura propone horarios, confirma y registra la cita en tu agenda sin intervención del personal." },
+  { id: "02", title: "Triaje Empático – Clasificación por urgencia.", description: "Identifica síntomas, urgencia y motivo de consulta para priorizar quién debe ser visto antes." },
+  { id: "03", title: "Bóveda WhatsApp-to-EHR – Historias clínicas sin copiar/pegar.", description: "Las conversaciones relevantes se envían al EHR o resumen clínico para que no pierdas información importante." }
 ];
 
 const solutionImages = [
@@ -66,19 +67,38 @@ const LandingPage: React.FC = () => {
     <div className="text-slate-800 premium-gradient">
 
         <section id="hero" className="relative min-h-screen flex flex-col items-center justify-center pt-24 pb-12 overflow-hidden px-6">
-           <img src="https://ddnnmcfbgqnhcuozurio.supabase.co/storage/v1/object/public/sincrohealth/baner%20/%20fondos%20/banner.webp" fetchPriority="high" loading="eager" decoding="async" alt="Banner de Kura AI" className="absolute inset-0 w-full h-full object-cover z-0" />
+           <img src="https://ddnnmcfbgqnhcuozurio.supabase.co/storage/v1/object/public/sincrohealth/baner%20/%20fondos%20/banner.webp" fetchPriority="high" loading="eager" decoding="async" alt="Software de IA para la gestión de clínicas médicas" className="absolute inset-0 w-full h-full object-cover z-0" />
            <div className="absolute top-[-10%] right-[-10%] w-[60%] h-[60%] bg-blue-100/30 rounded-full blur-[120px]"></div>
             <div className="absolute bottom-[-10%] left-[-10%] w-[50%] h-[50%] bg-orange-50/50 rounded-full blur-[100px]"></div>
             <div className="max-w-5xl mx-auto relative z-20">
                 <div className="bg-white/40 backdrop-blur-md rounded-3xl border border-white/30 shadow-2xl p-8 md:p-12 max-w-4xl mx-auto text-center">
-                    <h1 className="hero-title text-5xl md:text-7xl font-light text-slate-900 mb-6">
-                        Transforme su clínica con <span className="font-semibold text-[#0d5fb4]">Kura AI</span>
-                    </h1>
+                <h1 className="hero-title text-5xl md:text-7xl font-light text-slate-900 mb-6">
+                                Llena tu agenda y reduce el caos administrativo con{' '}
+                                <span className="text-[#137fec] min-w-[320px] inline-block">
+                                    <Typewriter
+                                        options={{
+                                            loop: true,
+                                            wrapperClassName: "text-[#137fec]",
+                                            cursorClassName: "text-[#137fec]"
+                                        }}
+                                        onInit={(typewriter) => {
+                                            typewriter
+                                                .typeString('IA médica')
+                                                .pauseFor(1000)
+                                                .deleteAll()
+                                                .typeString('Kura AI')
+                                                .pauseFor(1000)
+                                                .start();
+                                        }}
+                                    />
+                                </span>
+                            </h1>
                     <p className="text-xl md:text-2xl text-[var(--taupe)] font-light max-w-3xl mx-auto mb-12 leading-relaxed">
-                        Elevando la gestión médica hacia una experiencia de serenidad y rentabilidad sincronizada.\n                    </p>
+                        Kura AI automatiza WhatsApp, recordatorios y agenda para médicos independientes y clínicas medianas, reduciendo ausentismo y liberando horas de trabajo cada semana.
+                    </p>
                     <div className="flex flex-col sm:flex-row gap-6 justify-center items-center">
                         <a href="/#/registro" onClick={(e) => handleScroll(e, 'registro')} className="cta-button bg-[#0d5fb4] text-white text-lg font-medium hover:scale-105 shadow-2xl shadow-blue-500/30 text-center">
-                            Solicitar Prueba Gratuita
+                            Solicitar prueba gratuita de 30 días
                         </a>
                         <a href="/#/ia-humana" onClick={(e) => handleScroll(e, 'ia-humana')} className="text-[var(--taupe)] hover:text-slate-900 transition-colors flex items-center gap-2">
                           Conoce nuestra IA Humana →
@@ -101,7 +121,7 @@ const LandingPage: React.FC = () => {
                             <div className="glass-icon-container mb-8">
                                 <span className="material-symbols-outlined text-[#0d5fb4] text-4xl">{card.icon}</span>
                             </div>
-                            <h3 className="text-xl font-semibold text-slate-800 mb-4">{card.title}</h3>
+                            <h3 className="text-xl font-semibold text-slate-800 mb-4 text-balance">{card.title}</h3>
                             <p className="text-[var(--taupe)] font-light leading-relaxed">{card.description}</p>
                         </motion.div>
                     ))}
@@ -119,7 +139,7 @@ const LandingPage: React.FC = () => {
                                 <motion.div key={item.id} className="flex gap-6" initial={{ opacity: 0, x: -50 }} whileInView={{ opacity: 1, x: 0 }} transition={{ duration: 0.5 }} viewport={{ once: true }}>
                                     <div className="flex-shrink-0 w-12 h-12 rounded-full border border-[#0d5fb4]/20 flex items-center justify-center"><span className="text-[#0d5fb4] font-bold">{item.id}</span></div>
                                     <div>
-                                        <h3 className="text-xl font-semibold mb-2">{item.title}</h3>
+                                        <h3 className="text-xl font-semibold mb-2 leading-tight">{item.title}</h3>
                                         <p className="text-[var(--taupe)] font-light">{item.description}</p>
                                     </div>
                                 </motion.div>
@@ -129,7 +149,7 @@ const LandingPage: React.FC = () => {
                     <div className="relative py-12 flex flex-col gap-6 items-center">
                         {solutionImages.map((image, index) => (
                             <motion.div key={index} className="w-full max-w-[340px] h-[220px] rounded-2xl shadow-lg overflow-hidden" initial={{ opacity: 0, y: 50 }} whileInView={{ opacity: 1, y: 0 }} transition={{ duration: 0.5, delay: index * 0.1 }} viewport={{ once: true }} whileHover={{ scale: 1.05, zIndex: 50}} style={{ zIndex: 30 - index * 10, transform: `translateX(${(index - 1) * -2}rem)` }}>
-                                <img src={image.src} width={image.width} height={image.height} loading="lazy" decoding="async" className="w-full h-full object-cover" alt={`Solución ${index + 1}`} />
+                                <img src={image.src} width={image.width} height={image.height} loading="lazy" decoding="async" className="w-full h-full object-cover" alt={`Solución de Kura AI número ${index + 1}`} />
                             </motion.div>
                         ))}
                     </div>
@@ -144,19 +164,24 @@ const LandingPage: React.FC = () => {
                     <div className="relative z-10 grid lg:grid-cols-2 gap-16 items-center">
                         <div>
                             <h2 className="text-4xl md:text-5xl font-light mb-8 leading-tight text-[var(--deep-navy)]">Métricas que inspiran <br/><span className="text-[#0d5fb4]">tranquilidad</span></h2>
-                            <p className="text-[var(--deep-navy)] mb-12 text-lg font-light">Nuestros resultados no solo son números; son minutos recuperados para lo que realmente importa: la atención al paciente.</p>
-                            <div className="grid grid-cols-1 md:grid-cols-2 gap-x-8 gap-y-12"> {/* Changed to grid-cols-1 for small screens, gap-6 instead of px-4 on main container */}
+                            <p className="text-[var(--deep-navy)] mb-8 text-lg font-light">Nuestros resultados no solo son números; son minutos recuperados para lo que realmente importa: la atención al paciente.</p>
+                            <p className="text-sm text-[var(--taupe)] mb-10 text-balance">
+                                Resultados típicos en clínicas de 1–5 doctores en un periodo de 3–6 meses.
+                            </p>
+                            <div className="grid grid-cols-1 md:grid-cols-2 gap-x-8 gap-y-12"> 
                                 {metrics.map(metric => (
-                                    <div key={metric.label} className="w-full h-auto min-h-fit"> {/* Ensure w-full, h-auto, min-h-fit */}
+                                    <div key={metric.label} className="w-full h-full"> 
                                         <p className="text-5xl font-light text-[#0d5fb4] mb-2 break-words">{metric.value}</p>
                                         <p className="text-xs text-[var(--deep-navy)] uppercase tracking-widest font-bold break-words">{metric.label}</p>
-                                        <p className="text-[10px] text-[var(--deep-navy)] mt-2 break-words whitespace-normal">{metric.sublabel}</p> {/* Removed max-w-[150px] */}
+                                        <p className="text-[10px] text-[var(--deep-navy)] mt-2 break-words whitespace-normal">{metric.sublabel}</p> 
                                     </div>
                                 ))}
                             </div>
+                             <p className="text-sm text-[var(--taupe)] mt-10 text-balance">
+                                En consulta privada individual, esto equivale a recuperar entre 8–12 horas de trabajo administrativo a la semana.
+                            </p>
                         </div>
-                        <div className="w-full flex justify-center items-center py-8 overflow-visible"> {/* Modified classes */}
-                            {/* The inner div, which was the wrapper, is now removed as per the new AnimatedPhone structure */}
+                        <div className="w-full flex justify-center items-center py-8 overflow-visible"> 
                                <Suspense fallback={null}>
                                   <AnimatedPhone />
                                </Suspense>
@@ -183,8 +208,8 @@ const LandingPage: React.FC = () => {
 
             <div className="max-w-7xl mx-auto relative z-10 w-full">
                 <div className="text-center mb-16">
-                    <h2 className="text-4xl md:text-5xl font-light text-white mb-6 tracking-tight">Recupere la rentabilidad y el control de su clínica hoy</h2>
-                    <p className="text-white/90 font-light max-w-3xl mx-auto text-lg leading-relaxed">Recupera el control de tu clínica, libera tu tiempo y optimiza tus recursos con la inteligencia artificial de Kura.</p>
+                    <h2 className="text-4xl md:text-5xl font-light text-white mb-4 tracking-tight">Solicitar Prueba Gratuita</h2>
+                    <p className="text-white/80 font-medium text-sm opacity-90">Incluye diagnóstico operativo inicial.</p>
                 </div>
                 <div className="grid lg:grid-cols-12 gap-12 items-start">
                     <div className="lg:col-span-5 space-y-6 pt-4">

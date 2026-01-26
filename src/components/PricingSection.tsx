@@ -6,13 +6,12 @@ const plans = [
   {
     id: "sincro-starter",
     name: "SINCRO-STARTER",
-    price: "$79 USD",
-    priceUnit: "/mes",
-    slogan: "Vuelva a ser médico, deje de ser detective de WhatsApp",
+    subtitle: "Para médicos independientes o consultorio pequeño (1–2 doctores).",
+    price: "79",
+    priceUnit: "USD/mes",
     features: [
+      { title: "Hasta 2 usuarios / mensajes mensuales ilimitados", description: "Perfecto para un médico y un asistente, sin preocuparse por el volumen de conversaciones." },
       { title: "Agente conversacional de IA 24/7", description: "Bot que califica síntomas, seguro y solvencia automáticamente." },
-      { title: "Respuesta en < 5 minutos", description: "Maximiza el agendamiento contactando al paciente en su momento de mayor interés." },
-      { title: "Unificación de datos pre-clínica", description: "Consolida chats y archivos en un repositorio único sin fragmentación." },
       { title: "Auto-agendamiento digital", description: "El paciente gestiona su cita sin intervención humana 24/7." },
       { title: "Recordatorios automatizados", description: "Secuencia de mensajes para reducir inasistencias mediante persuasión digital." },
     ],
@@ -20,16 +19,17 @@ const plans = [
       "Recuperación 10h/semana",
       "Admisión de 15min a 4min",
     ],
-    buttonText: "SOLICITAR PRUEBA GRATUITA",
+    buttonText: "Empezar prueba de 30 días.",
     isRecommended: false
   },
   {
     id: "sincro-pro",
     name: "SINCRO-PRO",
-    price: "$199 USD",
-    priceUnit: "/mes",
-    slogan: "La orquesta operativa de su centro médico",
+    subtitle: "Para clínicas medianas con varios doctores y múltiples consultorios.",
+    price: "199",
+    priceUnit: "USD/mes",
     features: [
+        { title: "Clínicas con 3–15 doctores", description: "Gestión de múltiples agendas, sucursales y permisos de equipo en una sola plataforma." },
         { title: "Todo en Sincro-Starter, y además...", description: "Acceso completo a las funcionalidades del plan inicial." },
         { title: "Soporte Multi-Doctores", description: "Panel centralizado para organizar agendas de diversos especialistas." },
         { title: "Llenado automático de cupos", description: "Detecta cancelaciones y ofrece el hueco a la lista de espera vía WhatsApp." },
@@ -39,25 +39,25 @@ const plans = [
       "Reducción No-Shows >40%",
       "Recuperación hasta $150k USD anuales",
     ],
-    buttonText: "SINCRONIZAR MI CLÍNICA AHORA",
+    buttonText: "Empezar prueba de 30 días.",
     isRecommended: true
   },
   {
     id: "sincro-enterprise",
     name: "SINCRO-ENTERPRISE",
+    subtitle: "Para redes médicas y grupos más grandes.",
     price: "Cotización",
     priceUnit: "Personalizada",
-    slogan: "Visibilidad financiera y arquitectura interoperable.",
     features: [
-      { title: "Visibilidad Económica Real-Time", description: "Visualiza pérdida financiera por pruebaras y valor de cartera." },
-      { title: "Interoperabilidad HL7/FHIR", description: "Integración profunda y segura con sistemas de salud existentes." },
+      { title: "Integraciones avanzadas HL7/FHIR", description: "Conecte Kura a su sistema de gestión hospitalaria (EHR/HIS) y ofrezca soporte financiero y de seguros." },
+      { title: "Visibilidad Económica Real-Time", description: "Visualiza pérdida financiera por inasistencias y valor de cartera de pacientes." },
       { title: "Ecosistema Multi-Agente", description: "IAs dedicadas a auditoría, facturación y validación de seguros." },
     ],
     impactMetrics: [
       "ROI de 15:1",
       "Aumento de valoración de la práctica",
     ],
-    buttonText: "Hablar con un Estratega",
+    buttonText: "Agendar llamada con un estratega.",
     isRecommended: false
   }
 ];
@@ -70,18 +70,16 @@ interface FeatureItemProps {
 const FeatureItem: React.FC<FeatureItemProps> = ({ title, description }) => {
     const [isExpanded, setIsExpanded] = useState(false);
 
-    const toggleExpanded = () => setIsExpanded(!isExpanded);
-
     return (
         <motion.li
             onHoverStart={() => setIsExpanded(true)}
             onHoverEnd={() => setIsExpanded(false)}
-            onClick={toggleExpanded} // Add onClick for mobile/tap
+            onClick={() => setIsExpanded(!isExpanded)}
             className="flex flex-col gap-1 text-sm text-slate-700 cursor-pointer"
         >
             <div className="flex items-start gap-3">
                 <span className="material-symbols-outlined text-lg text-green-500 mt-0.5">check_circle</span>
-                <span className="font-medium">{title}</span>
+                <span className="font-medium text-balance">{title}</span>
             </div>
             <AnimatePresence>
             {isExpanded && (
@@ -90,7 +88,7 @@ const FeatureItem: React.FC<FeatureItemProps> = ({ title, description }) => {
                     animate={{ height: "auto", opacity: 1 }}
                     exit={{ height: 0, opacity: 0 }}
                     transition={{ duration: 0.3, ease: "easeInOut" }}
-                    className="pl-8 pr-2 text-slate-500 text-xs"
+                    className="pl-8 pr-2 text-slate-500 text-xs text-balance"
                 >
                     {description}
                 </motion.div>
@@ -106,18 +104,8 @@ const PricingSection: React.FC = () => {
   const handleCTAClick = async (e: React.MouseEvent<HTMLAnchorElement>, source: string) => {
     e.preventDefault();
 
-    // Supabase insert for Interacciones
     try {
-      const { data, error } = await supabase
-        .from('Interacciones')
-        .insert([
-          { boton_id: source, seccion: 'planes', fecha: new Date().toISOString() },
-        ]);
-      if (error) {
-        console.error('Error al insertar interacción en Supabase:', error);
-      } else {
-        console.log('Interacción registrada en Supabase:', data);
-      }
+      await supabase.from('Interacciones').insert([{ boton_id: source, seccion: 'planes', fecha: new Date().toISOString() }]);
     } catch (error) {
       console.error('Error en la conexión a Supabase para interacciones:', error);
     }
@@ -127,11 +115,6 @@ const PricingSection: React.FC = () => {
       element.scrollIntoView({ behavior: 'smooth' });
       window.history.pushState(null, '', '/#/registro');
     }
-
-    console.log('EVENT: CTA_CLICK', {
-        event_category: 'Pricing',
-        event_label: source,
-    });
   };
 
   return (
@@ -141,9 +124,9 @@ const PricingSection: React.FC = () => {
             <h2 className="text-4xl md:text-5xl font-light text-slate-900 mb-6 leading-tight">Planes de Sincronización Clínica</h2>
         </div>
         <div className="grid grid-cols-1 lg:grid-cols-3 gap-8 items-stretch">
-            {plans.map((plan, index) => (
+            {plans.map((plan) => (
                 <motion.div
-                    key={index}
+                    key={plan.id}
                     className={`p-8 flex flex-col relative overflow-hidden h-full rounded-3xl backdrop-blur-md ${plan.isRecommended ? 'border-2 border-[#0d5fb4]/30 bg-white/70 shadow-xl' : 'border border-slate-200 bg-white/50 shadow'}`}
                     initial={{ opacity: 0, y: 20 }}
                     whileInView={{ opacity: 1, y: 0 }}
@@ -157,12 +140,12 @@ const PricingSection: React.FC = () => {
                     
                     <div className="mb-6 text-center">
                         <h3 className={`text-xl mb-2 font-semibold text-slate-900`}>{plan.name}</h3>
-                        <p className="text-[var(--taupe)] text-xs font-light italic min-h-[30px]">{plan.slogan}</p>
+                        <p className="text-[var(--taupe)] text-sm font-light min-h-[40px] text-balance">{plan.subtitle}</p>
                     </div>
 
                     <div className="mb-8 text-center">
-                        <span className="text-4xl font-semibold text-[#0d5fb4]">{plan.price}</span>
-                        {plan.priceUnit && <span className="block text-[var(--taupe)] text-xs mt-1">N/{plan.priceUnit}</span>}
+                        <span className="text-4xl font-semibold text-[#0d5fb4]">{plan.price === 'Cotización' ? plan.price : `$${plan.price}`}</span>
+                        {plan.priceUnit && <span className="block text-[var(--taupe)] text-sm mt-1">{plan.priceUnit}</span>}
                     </div>
 
                     <div className="flex-grow mb-8">
